@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated VHDL -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="ac.soton.coda.vhdl.presentation.VHDLModelWizardID"
+            name="%_UI_VHDLModelWizard_label"
+            class="ac.soton.coda.vhdl.presentation.VHDLModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/VHDLModelFile.gif">
+         <description>%_UI_VHDLModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated VHDL -->
+      <editor
+            id="ac.soton.coda.vhdl.presentation.VHDLEditorID"
+            name="%_UI_VHDLEditor_label"
+            icon="icons/full/obj16/VHDLModelFile.gif"
+            extensions="vxmi"
+            class="ac.soton.coda.vhdl.presentation.VHDLEditor"
+            contributorClass="ac.soton.coda.vhdl.presentation.VHDLActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

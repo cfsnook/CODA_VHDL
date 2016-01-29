@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ac.soton.coda.vhdl/src" modelPluginID="ac.soton.coda.vhdl"
+    modelName="VHDL" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    interfaceNamePattern="I{0}" classNamePattern="{0}" operationReflection="true"
+    importOrganizing="true">
+  <foreignModel>VHDL.ecore</foreignModel>
+  <genPackages prefix="VHDL" basePackage="ac.soton.coda" disposableProviderFactory="true"
+      fileExtensions="vxmi" ecorePackage="VHDL.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="VHDL.ecore#//VHDLMode">
+      <genEnumLiterals ecoreEnumLiteral="VHDL.ecore#//VHDLMode/IN"/>
+      <genEnumLiterals ecoreEnumLiteral="VHDL.ecore#//VHDLMode/OUT"/>
+      <genEnumLiterals ecoreEnumLiteral="VHDL.ecore#//VHDLMode/INOUT"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLEObject"/>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLNamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VHDL.ecore#//VHDLNamedElement/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLLabelledElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VHDL.ecore#//VHDLLabelledElement/label"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLIdentifierElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VHDL.ecore#//VHDLIdentifierElement/identifier"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLBooleanExpressionElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VHDL.ecore#//VHDLBooleanExpressionElement/booleanExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLExpressionElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VHDL.ecore#//VHDLExpressionElement/expression"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLSequentialStatementsElement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLSequentialStatementsElement/sequentialStatements"/>
+    </genClasses>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLDesignFile">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLDesignFile/designUnits"/>
+    </genClasses>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLDesignUnit">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLDesignUnit/contextItems"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLDesignUnit/libraryUnit"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLContextItem"/>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLLibraryClause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLLibraryClause/logicalNames"/>
+    </genClasses>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLLogicalName"/>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLUseClause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLUseClause/selectedNames"/>
+    </genClasses>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLSelectedName"/>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLLibraryUnit"/>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLPrimaryUnit"/>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLEntityDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLEntityDeclaration/portInterfaceList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLEntityDeclaration/entityDeclarativeItems"/>
+    </genClasses>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLInterfaceList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLInterfaceList/interfaceElements"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLInterfaceElement"/>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLInterfaceSignalDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VHDL.ecore#//VHDLInterfaceSignalDeclaration/signal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VHDL.ecore#//VHDLInterfaceSignalDeclaration/mode"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLInterfaceSignalDeclaration/subtypeIndication"/>
+    </genClasses>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLSubtypeIndication"/>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLEntityDeclarativeItem"/>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLTypeDeclaration"/>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLFullTypeDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLFullTypeDeclaration/typeDefinition"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLTypeDefinition"/>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLScalarTypeDefinition"/>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLEnumerationTypeDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLEnumerationTypeDefinition/enumerationLiterals"/>
+    </genClasses>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLEnumerationLiteral"/>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLSecondaryUnit"/>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLArchitectureBody">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLArchitectureBody/blockDeclarativeItems"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLArchitectureBody/concurrentStatements"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLBlockDeclarativeItem"/>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLConcurrentStatement"/>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLProcessStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLProcessStatement/sensitivityList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLProcessStatement/processDeclarativeItems"/>
+    </genClasses>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLSignalName"/>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLProcessDeclarativeItem"/>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLSequentialStatement"/>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLAssertionStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLAssertionStatement/assertion"/>
+    </genClasses>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLAssertion"/>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLSignalAssignmentStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VHDL.ecore#//VHDLSignalAssignmentStatement/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute VHDL.ecore#//VHDLSignalAssignmentStatement/waveform"/>
+    </genClasses>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLIfStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLIfStatement/ifClause"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLIfStatement/elsifClauses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLIfStatement/elseClause"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="VHDL.ecore#//VHDLGuardedStatementElement"/>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLIfClause"/>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLElsifClause"/>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLElseClause"/>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLCaseStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VHDL.ecore#//VHDLCaseStatement/caseStatementAlternatives"/>
+    </genClasses>
+    <genClasses ecoreClass="VHDL.ecore#//VHDLCaseStatementAlternative"/>
+  </genPackages>
+</genmodel:GenModel>
