@@ -14,10 +14,10 @@ import org.eventb.emf.persistence.EventBEMFUtils;
 
 import ac.soton.coda.vhdl.IVHDLArchitectureBody;
 import ac.soton.coda.vhdl.custom.VHDLUtils;
+import ac.soton.emf.translator.IRule;
+import ac.soton.emf.translator.TranslationDescriptor;
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.emf.components.ComponentVariable;
-import ac.soton.eventb.emf.diagrams.importExport.IRule;
-import ac.soton.eventb.emf.diagrams.importExport.TranslationDescriptor;
 import ch.ethz.eventb.utils.EventBSCUtils;
 
 public class Component_VariablesAsSignalDeclarationRule extends

@@ -11,12 +11,12 @@ import org.eventb.emf.core.machine.MachinePackage;
 import ac.soton.coda.vhdl.IVHDLArchitectureBody;
 import ac.soton.coda.vhdl.IVHDLProcessStatement;
 import ac.soton.coda.vhdl.custom.VHDLUtils;
+import ac.soton.emf.translator.IRule;
+import ac.soton.emf.translator.TranslationDescriptor;
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.emf.components.ComponentsPackage;
 import ac.soton.eventb.emf.components.Connector;
 import ac.soton.eventb.emf.components.util.ComponentsUtils;
-import ac.soton.eventb.emf.diagrams.importExport.IRule;
-import ac.soton.eventb.emf.diagrams.importExport.TranslationDescriptor;
 import ac.soton.eventb.statemachines.Statemachine;
 import ac.soton.eventb.statemachines.StatemachinesUtils;
 

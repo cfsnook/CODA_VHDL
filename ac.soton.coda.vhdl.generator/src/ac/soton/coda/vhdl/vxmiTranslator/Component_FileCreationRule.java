@@ -10,9 +10,9 @@ import org.eclipse.emf.ecore.EObject;
 import ac.soton.coda.vhdl.IVHDLDesignFile;
 import ac.soton.coda.vhdl.IVHDLDesignUnit;
 import ac.soton.coda.vhdl.custom.VHDLUtils;
+import ac.soton.emf.translator.IRule;
+import ac.soton.emf.translator.TranslationDescriptor;
 import ac.soton.eventb.emf.components.Component;
-import ac.soton.eventb.emf.diagrams.importExport.IRule;
-import ac.soton.eventb.emf.diagrams.importExport.TranslationDescriptor;
 
 public class Component_FileCreationRule extends AbstractVHDLRule implements
 		IRule {

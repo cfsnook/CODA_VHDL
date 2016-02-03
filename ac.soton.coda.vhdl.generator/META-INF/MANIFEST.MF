@@ -21,12 +21,12 @@ Require-Bundle: org.eclipse.ui;bundle-version="3.106.1",
  ac.soton.eventb.emf.oracle;bundle-version="1.0.1",
  ac.soton.coda.ui;bundle-version="0.0.3",
  ac.soton.coda.vhdl;bundle-version="0.0.1",
- ac.soton.eventb.emf.diagrams.importExport;bundle-version="0.0.1",
  org.eclipse.emf.workspace;bundle-version="1.5.1",
  ac.soton.eventb.emf.core.extension.navigator;bundle-version="4.1.1",
  ac.soton.eventb.statemachines;bundle-version="3.1.1",
  ac.soton.eventb.emf.core.extension;bundle-version="4.0.0",
  org.eventb.core.ast;bundle-version="3.2.0",
- org.eventb.core.seqprover;bundle-version="3.1.0"
+ org.eventb.core.seqprover;bundle-version="3.1.0",
+ ac.soton.emf.translator;bundle-version="0.0.1"
 Export-Package: ac.soton.coda.internal.vhdl.utils;x-friends:="ac.soton.coda.vhdl.generator.tests"
 Bundle-ActivationPolicy: lazy

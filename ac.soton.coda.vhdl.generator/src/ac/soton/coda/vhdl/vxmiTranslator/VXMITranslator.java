@@ -5,9 +5,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import ac.soton.coda.vhdl.IVHDLDesignFile;
-import ac.soton.eventb.emf.diagrams.importExport.DefaultAdapter;
-import ac.soton.eventb.emf.diagrams.importExport.IAdapter;
-import ac.soton.eventb.emf.diagrams.importExport.TranslationDescriptor;
+import ac.soton.emf.translator.DefaultAdapter;
+import ac.soton.emf.translator.IAdapter;
+import ac.soton.emf.translator.TranslationDescriptor;
 
 public class VXMITranslator extends DefaultAdapter implements IAdapter {
 

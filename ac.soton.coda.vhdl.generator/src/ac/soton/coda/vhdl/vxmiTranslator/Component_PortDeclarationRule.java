@@ -10,11 +10,11 @@ import org.eventb.emf.core.machine.MachinePackage;
 import ac.soton.coda.vhdl.IVHDLEntityDeclaration;
 import ac.soton.coda.vhdl.VHDLMode;
 import ac.soton.coda.vhdl.custom.VHDLUtils;
+import ac.soton.emf.translator.IRule;
+import ac.soton.emf.translator.TranslationDescriptor;
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.emf.components.Connector;
 import ac.soton.eventb.emf.components.util.ComponentsUtils;
-import ac.soton.eventb.emf.diagrams.importExport.IRule;
-import ac.soton.eventb.emf.diagrams.importExport.TranslationDescriptor;
 
 public class Component_PortDeclarationRule extends AbstractVHDLRule implements
 		IRule {

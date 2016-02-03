@@ -17,7 +17,7 @@
       </wizard>
    </extension>
    <extension
-         point="ac.soton.eventb.emf.diagrams.importExport.rule">
+         point="ac.soton.emf.translator.rule">
       <translator
             adapter_class="ac.soton.coda.vhdl.vxmiTranslator.VXMITranslator"
             name="VXMI Translator"

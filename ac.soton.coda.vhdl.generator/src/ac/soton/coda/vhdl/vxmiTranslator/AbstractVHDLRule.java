@@ -22,9 +22,9 @@ import ac.soton.coda.vhdl.IVHDLCaseStatementAlternative;
 import ac.soton.coda.vhdl.IVHDLDesignFile;
 import ac.soton.coda.vhdl.IVHDLEntityDeclaration;
 import ac.soton.coda.vhdl.IVHDLFactory;
-import ac.soton.eventb.emf.diagrams.importExport.AbstractRule;
-import ac.soton.eventb.emf.diagrams.importExport.IRule;
-import ac.soton.eventb.emf.diagrams.importExport.TranslationDescriptor;
+import ac.soton.emf.translator.AbstractRule;
+import ac.soton.emf.translator.IRule;
+import ac.soton.emf.translator.TranslationDescriptor;
 import ac.soton.eventb.statemachines.State;
 import ac.soton.eventb.statemachines.Statemachine;
 
