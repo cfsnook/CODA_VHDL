@@ -1,0 +1,7 @@
+# Tracing options for the ac.soton.coda.vhdl.generator plug-in
+
+# Common issues
+ac.soton.coda.vhdl.generator/debug=false
+
+# VXMI translator
+ac.soton.coda.vhdl.generator/debug/VXMITranslator=false

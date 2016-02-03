@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.exportWizards">
+      <wizard
+            category="ac.soton.coda.ui.CODAExportCategory"
+            class="ac.soton.coda.internal.vhdl.wizards.ExportVHDLTestBenchWizard"
+            id="ac.soton.coda.vhdl.exportWizard.testBench"
+            name="%exportVHDLTestBenchWizardName">
+      </wizard>
+      <wizard
+            category="ac.soton.coda.ui.CODAExportCategory"
+            class="ac.soton.coda.internal.vhdl.wizards.ExportVHDLBehaviouralModelWizard"
+            id="ac.soton.coda.vhdl.exportWizard.behaviouralModel"
+            name="%exportVHDLBehaviouralModelWizardName">
+      </wizard>
+   </extension>
+   <extension
+         point="ac.soton.eventb.emf.diagrams.importExport.rule">
+      <translator
+            adapter_class="ac.soton.coda.vhdl.vxmiTranslator.VXMITranslator"
+            name="VXMI Translator"
+            root_source_class="Component"
+            sourcePackage="http://soton.ac.uk/models/eventb/components/2014"
+            translatorID="ac.soton.coda.vhdl.generator.vxmiTranslator">
+         <rule
+               name="Component - File creation"
+               rule_class="ac.soton.coda.vhdl.vxmiTranslator.Component_FileCreationRule"
+               source_class="Component">
+         </rule>
+         <rule
+               name="Component - Context items"
+               rule_class="ac.soton.coda.vhdl.vxmiTranslator.Component_ContextItemsRule"
+               source_class="Component">
+         </rule>
+         <rule
+               name="Component - Entity declaration"
+               rule_class="ac.soton.coda.vhdl.vxmiTranslator.Component_EntityDeclarationRule"
+               source_class="Component">
+         </rule>
+         <rule
+               name="Component - Port declaration"
+               rule_class="ac.soton.coda.vhdl.vxmiTranslator.Component_PortDeclarationRule"
+               source_class="Component">
+         </rule>
+         <rule
+               name="Component - Type declaration"
+               rule_class="ac.soton.coda.vhdl.vxmiTranslator.Component_TypeDeclarationRule"
+               source_class="Component">
+         </rule>
+         <rule
+               name="Component - Architecture body"
+               rule_class="ac.soton.coda.vhdl.vxmiTranslator.Component_ArchitectureBodyRule"
+               source_class="Component">
+         </rule>
+         <rule
+               name="Component - Clock process"
+               rule_class="ac.soton.coda.vhdl.vxmiTranslator.Component_ClockProcessRule"
+               source_class="Component">
+         </rule>
+         <rule
+               name="Component - Variables as signal declaration"
+               rule_class="ac.soton.coda.vhdl.vxmiTranslator.Component_VariablesAsSignalDeclarationRule"
+               source_class="Component">
+         </rule>
+         <rule
+               name="Statemachine - States as an enumeration type"
+               rule_class="ac.soton.coda.vhdl.vxmiTranslator.Statemachine_StatesAsAnEnumerationTypeRule"
+               sourcePackage="http://soton.ac.uk/models/eventb/statemachines/2014"
+               source_class="Statemachine">
+         </rule>
+         <rule
+               name="Statemachine - State variable as signal declaration"
+               rule_class="ac.soton.coda.vhdl.vxmiTranslator.Statemachine_StateVariableAsSignalDeclarationRule"
+               sourcePackage="http://soton.ac.uk/models/eventb/statemachines/2014"
+               source_class="Statemachine">
+         </rule>
+         <rule
+               name="Statemachine - Process declaration"
+               rule_class="ac.soton.coda.vhdl.vxmiTranslator.Statemachine_ProcessDeclarationRule"
+               sourcePackage="http://soton.ac.uk/models/eventb/statemachines/2014"
+               source_class="Statemachine">
+         </rule>
+         <rule
+               name="Statemachine - States as case statement"
+               rule_class="ac.soton.coda.vhdl.vxmiTranslator.Statemachine_StatesAsCaseStatementRule"
+               sourcePackage="http://soton.ac.uk/models/eventb/statemachines/2014"
+               source_class="Statemachine">
+         </rule>
+         <rule
+               name="Statemachine - Transition as assignments"
+               rule_class="ac.soton.coda.vhdl.vxmiTranslator.Statemachine_TransitionAsAssignmentsRule"
+               sourcePackage="http://soton.ac.uk/models/eventb/statemachines/2014"
+               source_class="Transition">
+         </rule>
+         <rule
+               name="Component - Transition as assignments"
+               rule_class="ac.soton.coda.vhdl.vxmiTranslator.Component_TransitionAsAssignmentsRule"
+               source_class="Transition">
+         </rule>
+         <rule
+               name="Component - Port wake as process"
+               rule_class="ac.soton.coda.vhdl.vxmiTranslator.Component_PortWakeAsProcessRule"
+               source_class="PortWake">
+         </rule>
+         <rule
+               name="Statemachine - Initialisation"
+               rule_class="ac.soton.coda.vhdl.vxmiTranslator.Statemachine_InitialisationRule"
+               sourcePackage="http://soton.ac.uk/models/eventb/statemachines/2014"
+               source_class="Transition">
+         </rule>
+         <rule
+               name="Statemachine - State update"
+               rule_class="ac.soton.coda.vhdl.vxmiTranslator.Statemachine_StateUpdateRule"
+               sourcePackage="http://soton.ac.uk/models/eventb/statemachines/2014"
+               source_class="Statemachine">
+         </rule>	
+      </translator>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            description="VXMI Translator description"
+            id="ac.soton.coda.vhdl.generator.vxmiTranslator"
+            name="Translate to VXMI">
+      </command>
+      <command
+            description="VHDL Translator description"
+            id="ac.soton.coda.vhdl.generator.vhdlTranslator"
+            name="Translate to VHDL">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="ac.soton.coda.internal.handlers.VXMITranlatorHandler"
+            commandId="ac.soton.coda.vhdl.generator.vxmiTranslator">
+      </handler>
+      <handler
+            class="ac.soton.coda.internal.handlers.VHDLTranlatorHandler"
+            commandId="ac.soton.coda.vhdl.generator.vhdlTranslator">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="true"
+            locationURI="popup:fr.systerel.explorer.navigator.view">
+         <command
+               commandId="ac.soton.coda.vhdl.generator.vxmiTranslator"
+               label="Translate to VXMI"
+               style="push">
+         </command>
+         <command
+               commandId="ac.soton.coda.vhdl.generator.vhdlTranslator"
+               label="Translate to VHDL"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false"
+                        operator="or">
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                        <test
+                              property="org.eclipse.core.resources.extension"
+                              value="vxmi">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+
+</plugin>

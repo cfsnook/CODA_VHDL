@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated VHDL -->
+      <package
+            uri="http://soton.ac.uk/models/vhdl/2015"
+            class="ac.soton.coda.vhdl.IVHDLPackage"
+            genModel="model/VHDL.genmodel"/>
+   </extension>
+
+</plugin>
