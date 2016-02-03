@@ -2,10 +2,11 @@
 <feature
       id="ac.soton.coda.vhdl.feature"
       label="%featureName"
-      version="0.0.1.qualifier"
+      version="0.0.2.qualifier"
       provider-name="%featureVendor"
-      license-feature="ac.soton.coda.license"
-      license-feature-version="1.0.0.qualifier">
+      plugin="ac.soton.coda.vhdl.branding"
+      license-feature="ac.soton.coda.licence"
+      license-feature-version="1.1.0.qualifier">
 
    <description>
       %description
@@ -41,27 +42,22 @@
       <import plugin="org.eventb.core" version="3.2.0" match="greaterOrEqual"/>
       <import plugin="ac.soton.eventb.emf.oracle" version="1.0.1" match="greaterOrEqual"/>
       <import plugin="ac.soton.coda.ui" version="0.0.3" match="greaterOrEqual"/>
-      <import plugin="ac.soton.eventb.emf.diagrams.importExport" version="0.0.1" match="greaterOrEqual"/>
+      <import plugin="ac.soton.coda.vhdl" version="0.0.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.workspace" version="1.5.1" match="greaterOrEqual"/>
       <import plugin="ac.soton.eventb.emf.core.extension.navigator" version="4.1.1" match="greaterOrEqual"/>
       <import plugin="ac.soton.eventb.statemachines" version="3.1.1" match="greaterOrEqual"/>
       <import plugin="ac.soton.eventb.emf.core.extension" version="4.0.0" match="greaterOrEqual"/>
       <import plugin="org.eventb.core.ast" version="3.2.0" match="greaterOrEqual"/>
       <import plugin="org.eventb.core.seqprover" version="3.1.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.ui" version="3.7.0" match="compatible"/>
       <import plugin="org.eclipse.core.runtime" version="3.10.0" match="compatible"/>
+      <import plugin="org.eclipse.ui" version="3.7.0" match="compatible"/>
       <import plugin="org.eclipse.ui.ide" version="3.7.0" match="compatible"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor" version="1.4.0" match="compatible"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.5.0" match="compatible"/>
-      <import plugin="org.rodinp.core" version="1.7.0" match="compatible"/>
-      <import plugin="org.eventb.emf.core" version="4.0.0" match="compatible"/>
-      <import plugin="org.eventb.emf.persistence" version="3.4.0" match="compatible"/>
-      <import plugin="ac.soton.eventb.emf.core.extension" version="4.0.0" match="compatible"/>
-      <import plugin="org.eclipse.sirius.tests.sample.scxml.editor" version="1.0.0" match="compatible"/>
       <import plugin="org.eclipse.emf.edit" version="2.10.0" match="compatible"/>
       <import plugin="org.eclipse.emf.workspace" version="1.5.0" match="compatible"/>
-      <import plugin="ac.soton.eventb.emf.diagrams" version="4.0.0" match="compatible"/>
-      <import plugin="ac.soton.coda.vhdl" version="0.0.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor" version="1.4.0" match="compatible"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.5.0" match="compatible"/>
+      <import plugin="ac.soton.emf.translator" version="0.0.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.9.1" match="compatible"/>
    </requires>
 
    <plugin
@@ -93,28 +89,13 @@
          unpack="false"/>
 
    <plugin
-         id="ac.soton.eventb.emf.diagrams.importExport"
+         id="ac.soton.coda.vhdl.branding"
          download-size="0"
          install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+         version="0.0.0"/>
 
    <plugin
-         id="org.eclipse.sirius.tests.sample.scxml.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.sirius.tests.sample.scxml"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.sirius.tests.sample.scxml.editor"
+         id="ac.soton.emf.translator"
          download-size="0"
          install-size="0"
          version="0.0.0"
