@@ -13,14 +13,14 @@ import ac.soton.coda.vhdl.IVHDLIfClause;
 import ac.soton.coda.vhdl.IVHDLIfStatement;
 import ac.soton.coda.vhdl.IVHDLProcessStatement;
 import ac.soton.coda.vhdl.custom.VHDLUtils;
+import ac.soton.emf.translator.IRule;
+import ac.soton.emf.translator.TranslationDescriptor;
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.emf.components.DataPacket;
 import ac.soton.eventb.emf.components.DelayedDataPacket;
 import ac.soton.eventb.emf.components.OperationAction;
 import ac.soton.eventb.emf.components.OperationGuard;
 import ac.soton.eventb.emf.components.PortWake;
-import ac.soton.eventb.emf.diagrams.importExport.IRule;
-import ac.soton.eventb.emf.diagrams.importExport.TranslationDescriptor;
 import ac.soton.eventb.statemachines.StatemachinesPackage;
 
 public class Component_PortWakeAsProcessRule extends AbstractVHDLRule implements

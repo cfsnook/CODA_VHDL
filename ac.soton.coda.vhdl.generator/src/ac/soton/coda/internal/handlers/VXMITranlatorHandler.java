@@ -18,12 +18,12 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eventb.emf.persistence.EMFRodinDB;
 
+import ac.soton.emf.translator.Activator;
+import ac.soton.emf.translator.command.TranslateCommand;
+import ac.soton.emf.translator.impl.Messages;
+import ac.soton.emf.translator.impl.TranslatorFactory;
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.emf.core.extension.navigator.provider.ExtensionNavigatorItem;
-import ac.soton.eventb.emf.diagrams.importExport.Activator;
-import ac.soton.eventb.emf.diagrams.importExport.command.TranslateCommand;
-import ac.soton.eventb.emf.diagrams.importExport.impl.Messages;
-import ac.soton.eventb.emf.diagrams.importExport.impl.TranslatorFactory;
 
 public class VXMITranlatorHandler extends AbstractHandler implements IHandler {
 

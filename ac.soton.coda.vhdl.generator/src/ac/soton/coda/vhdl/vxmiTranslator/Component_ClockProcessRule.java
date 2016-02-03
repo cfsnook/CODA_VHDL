@@ -10,9 +10,9 @@ import ac.soton.coda.vhdl.IVHDLIfClause;
 import ac.soton.coda.vhdl.IVHDLIfStatement;
 import ac.soton.coda.vhdl.IVHDLProcessStatement;
 import ac.soton.coda.vhdl.custom.VHDLUtils;
+import ac.soton.emf.translator.IRule;
+import ac.soton.emf.translator.TranslationDescriptor;
 import ac.soton.eventb.emf.components.Component;
-import ac.soton.eventb.emf.diagrams.importExport.IRule;
-import ac.soton.eventb.emf.diagrams.importExport.TranslationDescriptor;
 
 public class Component_ClockProcessRule extends AbstractVHDLRule implements IRule {
 

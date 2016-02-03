@@ -7,8 +7,8 @@ import org.eclipse.emf.ecore.EObject;
 
 import ac.soton.coda.vhdl.IVHDLArchitectureBody;
 import ac.soton.coda.vhdl.custom.VHDLUtils;
-import ac.soton.eventb.emf.diagrams.importExport.IRule;
-import ac.soton.eventb.emf.diagrams.importExport.TranslationDescriptor;
+import ac.soton.emf.translator.IRule;
+import ac.soton.emf.translator.TranslationDescriptor;
 import ac.soton.eventb.statemachines.Statemachine;
 
 public class Statemachine_StateVariableAsSignalDeclarationRule extends
