@@ -15,17 +15,17 @@ Title=CODA VHDL Generator User Manual
 Help="CODA VHDL Generator User Manual","chm.hhc","chm.hhk","index.html","index.html",,,,,0x73520,,0x383e,[200,200,1000,800],,,,,,,0
 
 [FILES]
-sec-vhdl-user-agreement.html
+sec-vhdl-tasks.html
 sec-vhdl-reference.html
 sec-vhdl-samples.html
+sec-vhdl-user-agreement.html
 sec-vhdl-getting-started.html
 sec-vhdl-legal.html
 sec-vhdl-behavioural.html
 sec-vhdl-concepts.html
-index.html
 sec-vhdl-vxmi.html
+index.html
 sec-vhdl-generate-behavioural-model-tutorial.html
-sec-vhdl-tasks.html
 sec-transl-coda-2-vxmi.html
 
 
