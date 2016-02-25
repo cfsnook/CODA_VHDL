@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<map version="1.0"> 
+<mapID target="toplevelfolder">
+<mapID target="sec:vhdl-getting-started" url="sec-vhdl-getting-started.html" />
+<mapID target="sec:vhdl-generate-behavioural-model-tutorial" url="sec-vhdl-generate-behavioural-model-tutorial.html" />
+<mapID target="sec:vhdl-concepts" url="sec-vhdl-concepts.html" />
+<mapID target="sec:vhdl-behavioural" url="sec-vhdl-behavioural.html" />
+<mapID target="sec:vhdl-vxmi" url="sec-vhdl-vxmi.html" />
+<mapID target="sec:vhdl-tasks" url="sec-vhdl-tasks.html" />
+<mapID target="sec:transl-coda-2-vxmi" url="sec-transl-coda-2-vxmi.html" />
+<mapID target="sec:vhdl-reference" url="sec-vhdl-reference.html" />
+<mapID target="sec:vhdl-samples" url="sec-vhdl-samples.html" />
+<mapID target="sec:vhdl-legal" url="sec-vhdl-legal.html" />
+<mapID target="sec:vhdl-user-agreement" url="sec-vhdl-user-agreement.html" />
+</mapID>
+</map>

@@ -1,0 +1,782 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="shortcut icon" href="icons/pyfav.png" type="image/png" />
+<link href="index.html" title="CODA VHDL Generator User Manual" rel="start" />
+<link href="index.html" title="CODA VHDL Generator User Manual" rel="first" />
+<link href="index.html" rel="contents" title="Contents" />
+<link rel="index" title="Index" />
+<link href="sec-vhdl-reference.html" rel="next" />
+<link href="sec-vhdl-tasks.html" rel="prev" />
+<link href="sec-vhdl-tasks.html" rel="parent" />
+<meta name="aesop" content="information" />
+<title>3.1 Translating CODA models into VHDL</title>
+</head>
+<body>
+<div class="navigation">
+<div id="top-navigation-panel" xml:id="top-navigation-panel">
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class="online-navigation"><a title="3 Tasks" href="sec-vhdl-tasks.html" rel="prev"><img src="icons/previous.png" border="0" height="32" alt="Previous Page" width="32" /></a></td>
+<td class="online-navigation"><a title="3 Tasks" href="sec-vhdl-tasks.html" rel="parent"><img src="icons/up.png" border="0" height="32" alt="Up One Level" width="32" /></a></td>
+<td class="online-navigation"><a title="Reference" href="sec-vhdl-reference.html" rel="next"><img src="icons/next.png" border="0" height="32" alt="Next Page" width="32" /></a></td>
+<td align="center" width="100%">CODA VHDL Generator User Manual</td>
+<td class="online-navigation"><a href="index.html" rel="contents" title="Table of Contents"><img src="icons/contents.png" border="0" height="32" alt="Contents" width="32" /></a></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" width="32" /></td>
+</tr></table>
+<div class="online-navigation">
+<span><b class="navlabel">Previous:</b>
+<a href="sec-vhdl-tasks.html" class="sectref" rel="prev">Tasks</a></span>
+<span><b class="navlabel">Up:</b>
+<a href="sec-vhdl-tasks.html" class="sectref" rel="parent">Tasks</a></span>
+<span><b class="navlabel">Next:</b>
+<a href="sec-vhdl-reference.html" class="sectref" rel="next">Reference</a></span>
+</div>
+<hr /></div>
+</div>
+
+
+
+<div><h2 id="sec:transl-coda-2-vxmi">3.1 Translating CODA models into VHDL</h2>
+<p>Since VXMI is just a canonical representation of VHDL in XML, we consider the translation from CODA models directly to VHDL. </p><p>For a component <tt class="ttfamily">C</tt>, its corresponding model contains two design units. </p><ol class="enumerate">
+<li value="1"><p>The first design unit contains the generated context items and the entity declaration. </p></li><li value="2"><p>The second design unit contains the architecture body of the declared entity. </p></li>
+</ol><h3 id="sec:vhdl-context-items">Context Items</h3>
+<p>By default, the context items are generated for each component can be seen in Table <a href="sec-transl-coda-2-vxmi.html#tab:vhdl-ctx-items">1</a>. </p><div id="tab:vhdl-ctx-items" class="table"> <center><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> Source </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> Generated </p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; border-bottom-color:black; text-align:left"><p>For component <tt class="ttfamily">C</tt> </p></td>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-bottom-color:black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">LIBRARY</tt></span> ieee;</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#0000FF"><tt class="ttfamily">USE</tt></span> ieee.std_logic_1164.all;</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#0000FF"><tt class="ttfamily">USE</tt></span> ieee.std_logic_unsigned.all; </p></td>
+
+</tr>
+</table></tt> </p></td>
+
+</tr>
+</table> <div class="caption"><b>Table 1</b>: <span>VHDL Context Items</span></div>  </center></div><h3 id="sec:vhdl-entity-declaration">Entity Declaration</h3>
+<p>  For a component <tt class="ttfamily">C</tt>, the template for the entity declaration generated is as in Table <a href="sec-transl-coda-2-vxmi.html#tab:vhdl-entity-declaration-template">2</a>. </p><div id="tab:vhdl-entity-declaration-template" class="table"> <center><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> Source </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> Destination </p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; border-bottom-color:black; text-align:left"><p>For component <tt class="ttfamily">C</tt> </p></td>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-bottom-color:black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">ENTITY</tt></span> C <span style="color:#0000FF"><tt class="ttfamily">IS</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#0000FF"><tt class="ttfamily">PORT</tt></span> ( </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   ... Port declarations ... </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>); </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   ... Type declarations ... </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#0000FF"><tt class="ttfamily">END</tt></span> C; </p></td>
+
+</tr>
+</table></tt> </p></td>
+
+</tr>
+</table> <div class="caption"><b>Table 2</b>: <span>VHDL Entity Declaration template</span></div>  </center></div><h4 id="a0000000002">Port declarations</h4>
+<p> For each component <tt class="ttfamily">C</tt>, the two input ports <tt class="ttfamily">clk</tt> and <tt class="ttfamily">reset</tt> are generated by default. The input/output connectors to the component result in the input/output port declarations accordingly (see Table <a href="sec-transl-coda-2-vxmi.html#tab:vhdl-port-declarations">3</a>). </p><div id="tab:vhdl-port-declarations" class="table"> <table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> Source </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> Generated </p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p>For component <tt class="ttfamily">C</tt> </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">PORT</tt></span> ( </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   clk <span style="color:#0000FF"><tt class="ttfamily">:</tt></span> <span style="color:#0000FF"><tt class="ttfamily">IN</tt></span> std_logic; </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   reset <span style="color:#0000FF"><tt class="ttfamily">:</tt></span> <span style="color:#0000FF"><tt class="ttfamily">IN</tt></span> std_logic; </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   ... Other port declarations ... </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   ... (see below) ... </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>); </p></td>
+
+</tr>
+</table></tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p>For <tt class="ttfamily">C</tt>’s input connector <tt class="ttfamily">input</tt> of type <tt class="ttfamily">inputType</tt> </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p>    input <span style="color:#0000FF"><tt class="ttfamily">:</tt></span> <span style="color:#0000FF"><tt class="ttfamily">IN</tt></span> inputType<span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+</tr>
+</table></tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; border-bottom-color:black; text-align:left"><p>For <tt class="ttfamily">C</tt>’s output connector <tt class="ttfamily">output</tt> of type <tt class="ttfamily">outputType</tt> </p></td>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-bottom-color:black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p>    output <span style="color:#0000FF"><tt class="ttfamily">:</tt></span> <span style="color:#0000FF"><tt class="ttfamily">OUT</tt></span> outputType<span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+</tr>
+</table></tt></p></td>
+
+</tr>
+</table> <div class="caption"><b>Table 3</b>: <span>VHDL Port Declarations</span></div>  </div><h4 id="a0000000003">Type declarations</h4>
+<p> For each component <tt class="ttfamily">C</tt>, the enumeration type <tt class="ttfamily">BOOL</tt>. For each enumerated user-defined types that is “used” for component <tt class="ttfamily">C</tt>, its definition is generated as type declarations for the entity. An example of a used type is the type of an input or output connector. For each state-machine of <tt class="ttfamily">C</tt>, an enumerated type is generated accordingly. For nested state-machine, the <tt class="ttfamily">NULL</tt> element is also generated. The type declarations can be seen in Table <a href="sec-transl-coda-2-vxmi.html#tab:vhdl-type-declarations">4</a>. </p><div id="tab:vhdl-type-declarations" class="table"> <center><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> Source </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> Generated </p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p>For component <tt class="ttfamily">C</tt> </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">TYPE</tt></span> BOOL <span style="color:#0000FF"><tt class="ttfamily">IS</tt></span> <span style="color:#0000FF"><tt class="ttfamily">(</tt></span>TRUE<span style="color:#0000FF"><tt class="ttfamily">,</tt></span>FALSE<span style="color:#0000FF"><tt class="ttfamily">)</tt></span><span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+</tr>
+</table></tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p>For a enumerated used-type <tt class="ttfamily">TYPE</tt> with axiom <tt class="ttfamily">partition(TYPE, {ELEM1}, {ELEM2}, ..., {ELEMn})</tt> </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">TYPE</tt></span> TYPE <span style="color:#0000FF"><tt class="ttfamily">IS</tt></span> <span style="color:#0000FF"><tt class="ttfamily">(</tt></span>ELEM1<span style="color:#0000FF"><tt class="ttfamily">,</tt></span>ELEM2,..., ELEMn<span style="color:#0000FF"><tt class="ttfamily">)</tt></span><span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+</tr>
+</table></tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p>For <em>top-level</em> state-machine <tt class="ttfamily">SM</tt> with states <tt class="ttfamily">S1</tt>, <tt class="ttfamily">S2</tt>, ..., <tt class="ttfamily">Sn</tt> </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">TYPE</tt></span> SM <span style="color:#0000FF"><tt class="ttfamily">IS</tt></span> <span style="color:#0000FF"><tt class="ttfamily">(</tt></span>S1<span style="color:#0000FF"><tt class="ttfamily">,</tt></span>S2,..., Sn<span style="color:#0000FF"><tt class="ttfamily">)</tt></span><span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+</tr>
+</table></tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; border-bottom-color:black; text-align:left"><p>For <em>nested</em> state-machine <tt class="ttfamily">SM</tt> with states <tt class="ttfamily">S1</tt>, <tt class="ttfamily">S2</tt>, ..., <tt class="ttfamily">Sn</tt> </p></td>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-bottom-color:black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">TYPE</tt></span> SM <span style="color:#0000FF"><tt class="ttfamily">IS</tt></span> <span style="color:#0000FF"><tt class="ttfamily">(</tt></span>SM_NULL<span style="color:#0000FF"><tt class="ttfamily">,</tt></span> S1<span style="color:#0000FF"><tt class="ttfamily">,</tt></span> S2,..., Sn<span style="color:#0000FF"><tt class="ttfamily">)</tt></span><span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+</tr>
+</table></tt></p></td>
+
+</tr>
+</table> <div class="caption"><b>Table 4</b>: <span>VHDL Type Declarations</span></div>  </center></div><h3 id="sec:vhdl-architecture-body">Architecture Body</h3>
+<p>  For a component <tt class="ttfamily">C</tt>, the template for the architecture body generated is as in Table <a href="sec-transl-coda-2-vxmi.html#tab:vhdl-architecture-body-template">5</a>. </p><div id="tab:vhdl-architecture-body-template" class="table"> <center><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> Source </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> Generated </p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; border-bottom-color:black; text-align:left"><p>For component <tt class="ttfamily">C</tt> </p></td>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-bottom-color:black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">ARCHITECTURE</tt></span> behaviour <span style="color:#0000FF"><tt class="ttfamily">OF</tt></span> C <span style="color:#0000FF"><tt class="ttfamily">IS</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   ... Signal declarations ... </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#0000FF"><tt class="ttfamily">BEGIN</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   ... Concurrent processes ... </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#0000FF"><tt class="ttfamily">END</tt></span> behaviour; </p></td>
+
+</tr>
+</table></tt> </p></td>
+
+</tr>
+</table> <div class="caption"><b>Table 5</b>: <span>VHDL Architecture Body template</span></div>  </center></div><h4 id="a0000000004">Clock Process</h4>
+<p> For a component <tt class="ttfamily">C</tt>, a clock process is generated using the template in Table <a href="sec-transl-coda-2-vxmi.html#tab:vhdl-clock-process-template">6</a>. </p><div id="tab:vhdl-clock-process-template" class="table"> <center><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> Source </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> Generated </p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; border-bottom-color:black; text-align:left"><p>For component <tt class="ttfamily">C</tt> </p></td>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-bottom-color:black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">PROCESS</tt></span> <span style="color:#0000FF"><tt class="ttfamily">(</tt></span>clk<span style="color:#0000FF"><tt class="ttfamily">,</tt></span> reset<span style="color:#0000FF"><tt class="ttfamily">)</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#0000FF"><tt class="ttfamily">BEGIN</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   <span style="color:#0000FF"><tt class="ttfamily">IF</tt></span> <span style="color:#0000FF"><tt class="ttfamily">(</tt></span>reset = ’1’<span style="color:#0000FF"><tt class="ttfamily">)</tt></span> <span style="color:#0000FF"><tt class="ttfamily">THEN</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      ... Initialisation ... </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   <span style="color:#0000FF"><tt class="ttfamily">ELSIF</tt></span> <span style="color:#0000FF"><tt class="ttfamily">(</tt></span>raising_edge(clk)<span style="color:#0000FF"><tt class="ttfamily">)</tt></span> <span style="color:#0000FF"><tt class="ttfamily">THEN</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      ... Next state assignments ... </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   <span style="color:#0000FF"><tt class="ttfamily">END</tt></span><span style="color:#0000FF"><tt class="ttfamily">IF</tt></span><span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#0000FF"><tt class="ttfamily">END</tt></span><span style="color:#0000FF"><tt class="ttfamily">PROCESS</tt></span><span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+</tr>
+</table></tt></p></td>
+
+</tr>
+</table> <div class="caption"><b>Table 6</b>: <span>VHDL Clock process template</span></div>  </center></div><h4 id="a0000000005">Component Variables as Signal Declarations</h4>
+<p> For each variable <tt class="ttfamily">var</tt> of type <tt class="ttfamily">varType</tt> of a component <tt class="ttfamily">C</tt>, an interface signal declaration is created as seen in Table <a href="sec-transl-coda-2-vxmi.html#tab:vhdl-components-variables-signal-declarations">7</a>. </p><div id="tab:vhdl-components-variables-signal-declarations" class="table"> <center><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> Source </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> Generated </p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; border-bottom-color:black; text-align:left"><p>For each variable <tt class="ttfamily">var</tt> of type <tt class="ttfamily">varType</tt> of component <tt class="ttfamily">C</tt> </p></td>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-bottom-color:black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">SIGNAL</tt></span> var <span style="color:#0000FF"><tt class="ttfamily">:</tt></span> varType<span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+</tr>
+</table></tt></p></td>
+
+</tr>
+</table> <div class="caption"><b>Table 7</b>: <span>VHDL Component Variables as Signal Declarations</span></div>  </center></div><h4 id="a0000000006">State-machine Variables as Signal Declarations</h4>
+<p> For each state-machine <tt class="ttfamily">SM</tt> of a component <tt class="ttfamily">C</tt>, two signals are declared for the current and the next values of the state-machine (see Table <a href="sec-transl-coda-2-vxmi.html#tab:vhdl-sm-variables-signal-declarations">8</a>). </p><div id="tab:vhdl-sm-variables-signal-declarations" class="table"> <center><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> Source </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> Generated </p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; border-bottom-color:black; text-align:left"><p>For each state-machine <tt class="ttfamily">SM</tt> of component <tt class="ttfamily">C</tt> </p></td>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-bottom-color:black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">SIGNAL</tt></span> current_SM <span style="color:#0000FF"><tt class="ttfamily">:</tt></span> SM<span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#0000FF"><tt class="ttfamily">SIGNAL</tt></span> next_SM <span style="color:#0000FF"><tt class="ttfamily">:</tt></span> SM<span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+</tr>
+</table></tt></p></td>
+
+</tr>
+</table> <div class="caption"><b>Table 8</b>: <span>VHDL State-machine Variables as Signal Declarations</span></div>  </center></div><h4 id="a0000000007">Top-level State-machines as Process Declarations</h4>
+<p> For each top-level state-machine <tt class="ttfamily">SM</tt> of the component <tt class="ttfamily">C</tt>, a process declaration is created. The sensitivity list of the process consists of the current state of the state-machine and the signals corresponding to input connectors of component <tt class="ttfamily">C</tt>. </p><div id="tab:vhdl-top-sm-process-declarations-template" class="table"> <center><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> Source </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> Generated </p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; border-bottom-color:black; text-align:left"><p>Each top-level state-machine <tt class="ttfamily">SM</tt> of the component <tt class="ttfamily">C</tt> with input connectors <tt class="ttfamily">C1</tt>, <tt class="ttfamily">C2</tt>, ..., <tt class="ttfamily">Cn</tt> </p></td>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-bottom-color:black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">PROCESS</tt></span> <span style="color:#0000FF"><tt class="ttfamily">(</tt></span>current_SM<span style="color:#0000FF"><tt class="ttfamily">,</tt></span> C1<span style="color:#0000FF"><tt class="ttfamily">,</tt></span> C2<span style="color:#0000FF"><tt class="ttfamily">,</tt></span> ... <span style="color:#0000FF"><tt class="ttfamily">,</tt></span> Cn<span style="color:#0000FF"><tt class="ttfamily">)</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#0000FF"><tt class="ttfamily">BEGIN</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   ... Process body ...</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#0000FF"><tt class="ttfamily">END</tt></span></p></td>
+
+</tr>
+</table></tt></p></td>
+
+</tr>
+</table> <div class="caption"><b>Table 9</b>: <span>VHDL Top-level State-machine as Process Declarations Template</span></div>  </center></div><h4 id="a0000000008">State-machines as case statements</h4>
+<p> For each state-machine <tt class="ttfamily">SM</tt>, a case statement is generated as in Table <a href="sec-transl-coda-2-vxmi.html#tab:vhdl-sm-case-statements">10</a>. </p><div id="tab:vhdl-sm-case-statements" class="table"> <center><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> Source </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> Generated </p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; border-bottom-color:black; text-align:left"><p>Each state-machine <tt class="ttfamily">SM</tt> with states <tt class="ttfamily">S1</tt>, <tt class="ttfamily">S2</tt>, ... <tt class="ttfamily">Sn</tt> </p></td>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-bottom-color:black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">CASE</tt></span> current_SM <span style="color:#0000FF"><tt class="ttfamily">IS</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   <span style="color:#0000FF"><tt class="ttfamily">WHEN</tt></span> S1 =&gt; </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      ... Case alternative body ... </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   <span style="color:#0000FF"><tt class="ttfamily">WHEN</tt></span> S2 =&gt; </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      ... Case alternative body ...</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   ... </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   <span style="color:#0000FF"><tt class="ttfamily">WHEN</tt></span> Sn =&gt; </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      ... Case alternative body ...</p></td>
+
+</tr>
+</table></tt> </p></td>
+
+</tr>
+</table> <div class="caption"><b>Table 10</b>: <span>VHDL State-machine as Case Statements</span></div>  </center></div><p> If <tt class="ttfamily">SM</tt> is a top-level machine, the case statement is attached to the body of the process corresponding to <tt class="ttfamily">SM</tt>. In the case where <tt class="ttfamily">SM</tt> is a nested state-machine within a state <tt class="ttfamily">S</tt> of another state-machine. The case statement is attached to the case alternative corresponding to <tt class="ttfamily">S</tt>, i.e. the case alternative body of <tt class="ttfamily"><span style="color:#0000FF"><tt class="ttfamily">WHEN</tt></span> S =&gt;</tt>. </p><h4 id="a0000000009">State-machine Transitions as Assignments</h4>
+<p> A state-machine transition elaborating event <tt class="ttfamily">e</tt> is translated to an <span style="color:#0000FF"><tt class="ttfamily">IF</tt></span>or <span style="color:#0000FF"><tt class="ttfamily">ELSIF</tt></span>clause. Assume that the source of the transition is a state <tt class="ttfamily">S</tt> and the target of the transition is a state <tt class="ttfamily">T</tt>. The generated statement (i.e., <span style="color:#0000FF"><tt class="ttfamily">IF</tt></span>or <span style="color:#0000FF"><tt class="ttfamily">ELSIF</tt></span>clause) is attached to the case alternative corresponding to the <tt class="ttfamily">S</tt> state. The guards and actions of the transition is added accordingly. We consider the entering states and leaving states of the transition to translate them into assignments of the next state-machine value accordingly. </p><div id="tab:vhdl-sm-transitions-assignments" class="table"> <center><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> Source </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> Generated </p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p>A transition elaborating event <tt class="ttfamily">e</tt> with guard <tt class="ttfamily">G</tt> and action <tt class="ttfamily">A</tt></p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">IF</tt></span>/<span style="color:#0000FF"><tt class="ttfamily">ELSIF</tt></span> (G) <span style="color:#0000FF"><tt class="ttfamily">THEN</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   A </p></td>
+
+</tr>
+</table></tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p>Each <em>entering</em> state <tt class="ttfamily">ES</tt> (of state-machine <tt class="ttfamily">TSM</tt>) of the transition </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p>    next_TSM &lt;= ES </p></td>
+
+</tr>
+</table></tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; border-bottom-color:black; text-align:left"><p>Each <em>leaving</em> state <tt class="ttfamily">LS</tt> (of state-machine <tt class="ttfamily">SSM</tt>) of the transition </p></td>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-bottom-color:black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p>    next_SSM &lt;= SSM_NULL </p></td>
+
+</tr>
+</table></tt></p></td>
+
+</tr>
+</table> <div class="caption"><b>Table 11</b>: <span>VHDL State-machine Transitions as Assignments</span></div>  </center></div><h4 id="a0000000010">Component Transitions as Assignments</h4>
+<p> For each component transition elaborating event <tt class="ttfamily">e</tt>, its guards and actions are translated accordingly. If the same event is elaborated by some state-machine transition, the component transition guards and actions is appended to the translation of the state-machine transition (as showed previously). A port-send operation (to a connector <tt class="ttfamily">C</tt> with value <tt class="ttfamily">v</tt>) is translated to an assignment. </p><div id="tab:vhdl-component-transitions-assignments" class="table"> <center><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> Source </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> Generated </p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p>Each component transition with guard <tt class="ttfamily">G</tt> and action <tt class="ttfamily">A</tt> </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">IF</tt></span>/<span style="color:#0000FF"><tt class="ttfamily">ELSIF</tt></span> (G) <span style="color:#0000FF"><tt class="ttfamily">THEN</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   A </p></td>
+
+</tr>
+</table></tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; border-bottom-color:black; text-align:left"><p>Each port-send operation to a connector <tt class="ttfamily">C</tt> with value <tt class="ttfamily">v</tt> </p></td>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-bottom-color:black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p>    C &lt;= v </p></td>
+
+</tr>
+</table></tt></p></td>
+
+</tr>
+</table> <div class="caption"><b>Table 12</b>: <span>VHDL Component Transitions as Assignments</span></div>  </center></div><h4 id="a0000000011">Component Port Wakes as Process/Assignments</h4>
+<p> For each Port Wake event, if the same event is elaborated by some state-machine transition, it will be translated by appending the guards, actions, etc. to the state-machine transition’s translation. Otherwise, a new process is create for the Port Wake event. A Port Wake event contributes to the <span style="color:#0000FF"><tt class="ttfamily">IF</tt></span>or <span style="color:#0000FF"><tt class="ttfamily">ELSIF</tt></span>clause: both in the condition and the assignment part. The port wake receives is used to rewrite the translation of the guards and actions. In the below, we use the notation <tt class="ttfamily">[c := v] E</tt> to denote the formula obtain by replacing <tt class="ttfamily">c</tt> with <tt class="ttfamily">v</tt>. </p><div id="tab:vhdl-port-wakes-process-assignment" class="table"> <center><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> Source </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> Generated </p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p>The guard <tt class="ttfamily">G</tt> of a Port Wake event </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> Boolean expression <tt class="ttfamily">[c := v]G</tt> </p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p>The action <tt class="ttfamily">A</tt> of a Port Wake event </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> Assignment <tt class="ttfamily">[c := v] A</tt> </p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p>The port sends of a Port Wake event </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> Assignment to the corresponding connector with rewriting <tt class="ttfamily">[c := v]</tt> </p></td>
+
+</tr>
+</table> <div class="caption"><b>Table 13</b>: <span>VHDL Component Port Wakes as Process/Assignments</span></div>  </center></div><h4 id="a0000000012">State-machine Initial Transition as Initial Assignments</h4>
+<p> For each intial transition (transition start from an <em>Initial</em> state), assignments to the relevant state-machine variables is executed with the clock is reset, (the <span style="color:#0000FF"><tt class="ttfamily">IF</tt></span> clause in the clock process). </p><div id="tab:vhdl-init-transition-assignments" class="table"> <center><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> Source </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> Generated </p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; border-bottom-color:black; text-align:left"><p>For each state <tt class="ttfamily">S</tt> of state-machine <tt class="ttfamily">SM</tt> that the initial transition enter (note that this included nested states) </p></td>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-bottom-color:black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> current_SM &lt;= S </p></td>
+
+</tr>
+</table></tt></p></td>
+
+</tr>
+</table> <div class="caption"><b>Table 14</b>: <span>VHDL State-machine Initial Transition as Initial Assignments</span></div>  </center></div><h4 id="a0000000013">State-machine as State-update Assignment</h4>
+<p> For each state-machine <tt class="ttfamily">SM</tt> an state-update assignment is created as follows in the <span style="color:#0000FF"><tt class="ttfamily">ELSIF</tt></span>clause of the clock process. </p><div id="tab:vhdl-init-transition-assignments" class="table"> <center><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="border-top-style:solid; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> Source </p></td>
+
+    
+    <td style="border-top-style:solid; text-align:left; border-top-color:black; border-top-width:1px; border-right:1px solid black"><p> Generated </p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-left:1px solid black; border-right:1px solid black; border-top-color:black; border-top-width:1px; border-bottom-color:black; text-align:left"><p>For each state state-machine <tt class="ttfamily">SM</tt> </p></td>
+
+    
+    <td style="border-top-style:solid; border-bottom-style:solid; border-bottom-width:1px; border-bottom-color:black; border-right:1px solid black; border-top-color:black; border-top-width:1px; text-align:left"><p> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> current_SM &lt;= next_SM </p></td>
+
+</tr>
+</table></tt> is created in the <span style="color:#0000FF"><tt class="ttfamily">ELSIF</tt></span> clause of the clock process.</p></td>
+
+</tr>
+</table> <div class="caption"><b>Table 15</b>: <span>VHDL State-machine Initial Transition as Initial Assignments</span></div>  </center></div></div>
+
+
+
+<div class="navigation">
+<div class="online-navigation">
+<hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class="online-navigation"><a title="3 Tasks" href="sec-vhdl-tasks.html" rel="prev"><img src="icons/previous.png" border="0" height="32" alt="Previous Page" width="32" /></a></td>
+<td class="online-navigation"><a title="3 Tasks" href="sec-vhdl-tasks.html" rel="parent"><img src="icons/up.png" border="0" height="32" alt="Up One Level" width="32" /></a></td>
+<td class="online-navigation"><a title="Reference" href="sec-vhdl-reference.html" rel="next"><img src="icons/next.png" border="0" height="32" alt="Next Page" width="32" /></a></td>
+<td align="center" width="100%">CODA VHDL Generator User Manual</td>
+<td class="online-navigation"><a href="index.html" rel="contents" title="Table of Contents"><img src="icons/contents.png" border="0" height="32" alt="Contents" width="32" /></a></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" width="32" /></td>
+</tr></table>
+<div class="online-navigation">
+<span><b class="navlabel">Previous:</b>
+<a href="sec-vhdl-tasks.html" class="sectref" rel="prev">Tasks</a></span>
+<span><b class="navlabel">Up:</b>
+<a href="sec-vhdl-tasks.html" class="sectref" rel="parent">Tasks</a></span>
+<span><b class="navlabel">Next:</b>
+<a href="sec-vhdl-reference.html" class="sectref" rel="next">Reference</a></span>
+</div>
+</div>
+<hr />
+<!--
+<span class="release-info">Release 2.4.3, documentation updated on 29 March 2006.</span>
+-->
+</div>
+<!--End of Navigation Panel-->
+<!--
+<address>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</address>
+-->
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="shortcut icon" href="icons/pyfav.png" type="image/png" />
+<link href="index.html" title="CODA VHDL Generator User Manual" rel="start" />
+<link href="index.html" title="CODA VHDL Generator User Manual" rel="first" />
+<link href="index.html" rel="contents" title="Contents" />
+<link rel="index" title="Index" />
+<link href="sec-vhdl-legal.html" rel="next" />
+<link href="sec-vhdl-reference.html" rel="prev" />
+<link href="index.html" rel="parent" />
+<meta name="aesop" content="information" />
+<title>5 Samples</title>
+</head>
+<body>
+<div class="navigation">
+<div id="top-navigation-panel" xml:id="top-navigation-panel">
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class="online-navigation"><a title="4 Reference" href="sec-vhdl-reference.html" rel="prev"><img src="icons/previous.png" border="0" height="32" alt="Previous Page" width="32" /></a></td>
+<td class="online-navigation"><a title="CODA VHDL Generator User Manual" href="index.html" rel="parent"><img src="icons/up.png" border="0" height="32" alt="Up One Level" width="32" /></a></td>
+<td class="online-navigation"><a title="Legal" href="sec-vhdl-legal.html" rel="next"><img src="icons/next.png" border="0" height="32" alt="Next Page" width="32" /></a></td>
+<td align="center" width="100%">CODA VHDL Generator User Manual</td>
+<td class="online-navigation"><a href="index.html" rel="contents" title="Table of Contents"><img src="icons/contents.png" border="0" height="32" alt="Contents" width="32" /></a></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" width="32" /></td>
+</tr></table>
+<div class="online-navigation">
+<span><b class="navlabel">Previous:</b>
+<a href="sec-vhdl-reference.html" class="sectref" rel="prev">Reference</a></span>
+<span><b class="navlabel">Up:</b>
+<a href="index.html" class="sectref" rel="parent">CODA VHDL Generator User Manual</a></span>
+<span><b class="navlabel">Next:</b>
+<a href="sec-vhdl-legal.html" class="sectref" rel="next">Legal</a></span>
+</div>
+<hr /></div>
+</div>
+
+
+
+<div><h1 id="sec:vhdl-samples">5 Samples</h1>
+<p>The following VHDL code is generated for the <tt class="ttfamily">WM</tt> component of the Washing Machine example. </p><pre>
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.std_logic_unsigned.all;
+
+ENTITY WM IS
+  PORT (
+    clk : IN std_logic;
+    reset : IN std_logic;
+    lockedStatus : IN BOOL;
+    pID : IN PID;
+    lockCommand : OUT BOOL;
+    wmStatus : OUT washingMachine_STATES;
+  );
+
+  TYPE washingMachine_STATES is (IDLE, WASHING, RINSING, SPINNING);
+  TYPE IDLE_sm_STATES is (LOCKING_DOOR, UNLOCKING_DOOR, WAITING, IDLE_sm_NULL);
+  TYPE BOOL is (TRUE, FALSE);
+  TYPE PID is (noOp, Normal);
+  TYPE washingMachine_STATES is (IDLE, WASHING, RINSING, SPINNING);
+END WM;
+
+ARCHITECTURE behaviour OF WM IS
+  signal locked : BOOL;
+  signal unlockingCount : int;
+  signal lockingCount : int;
+  signal current_washingMachine : washingMachine_STATES;
+  signal next_washingMachine : washingMachine_STATES;
+  signal current_IDLE_sm : IDLE_sm_STATES;
+  signal next_IDLE_sm : IDLE_sm_STATES;
+BEGIN
+
+  PROCESS (clk, reset)
+  BEGIN
+    IF (reset = '1') THEN
+      current_IDLE_sm &lt;= WAITING
+      current_washingMachine &lt;= IDLE
+    ELSIF (raising_edge(clk)) THEN
+      current_washingMachine &lt;= next_washingMachine
+      current_IDLE_sm &lt;= next_IDLE_sm
+    END IF;
+  END PROCESS;
+
+  PROCESS (lockedStatus)
+  BEGIN
+    IF (lockedStatus = TRUE) THEN
+      locked &lt;= TRUE
+    END IF;
+  END PROCESS;
+
+  PROCESS (pID)
+  BEGIN
+    IF (IDLE_sm ≠ WAITING) THEN
+    END IF;
+  END PROCESS;
+
+  PROCESS (current_washingMachine, lockedStatus, pID)
+  BEGIN
+    CASE current_washingMachine IS 
+      WHEN IDLE =&gt; 
+        CASE current_IDLE_sm IS 
+          WHEN LOCKING_DOOR =&gt; 
+            IF (lockingCount = 0) &amp; (locked = FALSE) THEN
+              next_IDLE_sm &lt;= WAITING
+            ELSIF (lockingCount ≠ 0) THEN
+              lockingCount   &lt;=   lockingCount − 1
+            ELSIF (lockingCount = 0) &amp; (locked = TRUE) THEN
+              next_washingMachine &lt;= WASHING
+              next_IDLE_sm &lt;= IDLE_sm_NULL
+            END IF;
+          WHEN UNLOCKING_DOOR =&gt; 
+            IF (unlockingCount = 0) THEN
+              next_IDLE_sm &lt;= WAITING
+            ELSIF (unlockingCount ≠ 0) THEN
+              unlockingCount   &lt;=   unlockingCount − 1
+            END IF;
+          WHEN WAITING =&gt; 
+            IF ((true) &amp; (true)) THEN
+              lockingCount   &lt;=   4
+              next_IDLE_sm &lt;= LOCKING_DOOR
+              lockCommand &lt;= TRUE
+            END IF;
+      WHEN WASHING =&gt; 
+        IF ((true) &amp; (true)) THEN
+          next_washingMachine &lt;= RINSING
+          wmStatus &lt;= RINSING
+        END IF;
+      WHEN RINSING =&gt; 
+        IF ((true) &amp; (true)) THEN
+          next_washingMachine &lt;= WASHING
+          wmStatus &lt;= WASHING
+        ELSIF ((true) &amp; (true)) THEN
+          next_washingMachine &lt;= SPINNING
+          wmStatus &lt;= SPINNING
+        END IF;
+      WHEN SPINNING =&gt; 
+        IF ((true) &amp; (true)) THEN
+          next_washingMachine &lt;= RINSING
+          wmStatus &lt;= RINSING
+        ELSIF ((true) &amp; (true)) THEN
+          unlockingCount   &lt;=   4
+          next_IDLE_sm &lt;= UNLOCKING_DOOR
+          next_washingMachine &lt;= IDLE
+          locked   &lt;=   FALSE
+          lockCommand &lt;= FALSE
+          wmStatus &lt;= IDLE
+        END IF;
+  END PROCESS;
+END behaviour
+</pre></div>
+
+
+
+<div class="navigation">
+<div class="online-navigation">
+<hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class="online-navigation"><a title="4 Reference" href="sec-vhdl-reference.html" rel="prev"><img src="icons/previous.png" border="0" height="32" alt="Previous Page" width="32" /></a></td>
+<td class="online-navigation"><a title="CODA VHDL Generator User Manual" href="index.html" rel="parent"><img src="icons/up.png" border="0" height="32" alt="Up One Level" width="32" /></a></td>
+<td class="online-navigation"><a title="Legal" href="sec-vhdl-legal.html" rel="next"><img src="icons/next.png" border="0" height="32" alt="Next Page" width="32" /></a></td>
+<td align="center" width="100%">CODA VHDL Generator User Manual</td>
+<td class="online-navigation"><a href="index.html" rel="contents" title="Table of Contents"><img src="icons/contents.png" border="0" height="32" alt="Contents" width="32" /></a></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" width="32" /></td>
+</tr></table>
+<div class="online-navigation">
+<span><b class="navlabel">Previous:</b>
+<a href="sec-vhdl-reference.html" class="sectref" rel="prev">Reference</a></span>
+<span><b class="navlabel">Up:</b>
+<a href="index.html" class="sectref" rel="parent">CODA VHDL Generator User Manual</a></span>
+<span><b class="navlabel">Next:</b>
+<a href="sec-vhdl-legal.html" class="sectref" rel="next">Legal</a></span>
+</div>
+</div>
+<hr />
+<!--
+<span class="release-info">Release 2.4.3, documentation updated on 29 March 2006.</span>
+-->
+</div>
+<!--End of Navigation Panel-->
+<!--
+<address>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</address>
+-->
+</body>
+</html>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<toc label="CODA VHDL Generator User Manual">
+    <topic label="Getting Started" href="sec-vhdl-getting-started.html">
+       <topic label="Generating Behavioural VHDL Tutorial" href="sec-vhdl-generate-behavioural-model-tutorial.html" />
+    </topic><topic label="Concepts" href="sec-vhdl-concepts.html">
+       <topic label="Behavioural VHDL" href="sec-vhdl-behavioural.html" /><topic label="VXMI" href="sec-vhdl-vxmi.html" />
+    </topic><topic label="Tasks" href="sec-vhdl-tasks.html">
+       <topic label="Translating CODA models into VHDL" href="sec-transl-coda-2-vxmi.html" />
+    </topic><topic label="Reference" href="sec-vhdl-reference.html" /><topic label="Samples" href="sec-vhdl-samples.html" /><topic label="Legal" href="sec-vhdl-legal.html">
+       <topic label="CODA Software User Agreement" href="sec-vhdl-user-agreement.html" />
+    </topic>
+</toc>

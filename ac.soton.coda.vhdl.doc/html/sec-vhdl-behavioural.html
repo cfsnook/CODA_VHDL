@@ -1,0 +1,776 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="shortcut icon" href="icons/pyfav.png" type="image/png" />
+<link href="index.html" title="CODA VHDL Generator User Manual" rel="start" />
+<link href="index.html" title="CODA VHDL Generator User Manual" rel="first" />
+<link href="index.html" rel="contents" title="Contents" />
+<link rel="index" title="Index" />
+<link href="sec-vhdl-vxmi.html" rel="next" />
+<link href="sec-vhdl-concepts.html" rel="prev" />
+<link href="sec-vhdl-concepts.html" rel="parent" />
+<meta name="aesop" content="information" />
+<title>2.1 Behavioural VHDL</title>
+</head>
+<body>
+<div class="navigation">
+<div id="top-navigation-panel" xml:id="top-navigation-panel">
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class="online-navigation"><a title="2 Concepts" href="sec-vhdl-concepts.html" rel="prev"><img src="icons/previous.png" border="0" height="32" alt="Previous Page" width="32" /></a></td>
+<td class="online-navigation"><a title="2 Concepts" href="sec-vhdl-concepts.html" rel="parent"><img src="icons/up.png" border="0" height="32" alt="Up One Level" width="32" /></a></td>
+<td class="online-navigation"><a title="VXMI" href="sec-vhdl-vxmi.html" rel="next"><img src="icons/next.png" border="0" height="32" alt="Next Page" width="32" /></a></td>
+<td align="center" width="100%">CODA VHDL Generator User Manual</td>
+<td class="online-navigation"><a href="index.html" rel="contents" title="Table of Contents"><img src="icons/contents.png" border="0" height="32" alt="Contents" width="32" /></a></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" width="32" /></td>
+</tr></table>
+<div class="online-navigation">
+<span><b class="navlabel">Previous:</b>
+<a href="sec-vhdl-concepts.html" class="sectref" rel="prev">Concepts</a></span>
+<span><b class="navlabel">Up:</b>
+<a href="sec-vhdl-concepts.html" class="sectref" rel="parent">Concepts</a></span>
+<span><b class="navlabel">Next:</b>
+<a href="sec-vhdl-vxmi.html" class="sectref" rel="next">VXMI</a></span>
+</div>
+<hr /></div>
+</div>
+
+
+
+<div><h2 id="sec:vhdl-behavioural">2.1 Behavioural VHDL</h2>
+<p>  We use a subset of the behavioural VHDL syntax as defined in the VHDL standard 1076. </p><p><tt class="ttfamily"><small class="footnotesize"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p>  DesignFile </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> DesignUnit+ </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>DesignUnit </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> ContextItem* LibraryUnit </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>ContextItem </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> LibraryClause | UseClause </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>LibraryClause </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">LIBRARY</tt></span> LogicalName (<span style="color:#0000FF"><tt class="ttfamily">,</tt></span> LogicalName)*<span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>LogicalName </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> Identifier </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>UseClause </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">USE</tt></span> SelectedName (<span style="color:#0000FF"><tt class="ttfamily">,</tt></span> SelectedName)*<span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>Name </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> SelectedName | </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>LibraryUnit </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> PrimaryUnit | SecondaryUnit </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>PrimaryUnit </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> EntityDeclaration </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>EntityDeclaration </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">ENTITY</tt></span> Identifier <span style="color:#0000FF"><tt class="ttfamily">IS</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>    <span style="color:#0000FF"><tt class="ttfamily">PORT</tt></span> ( </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>       InterfaceList </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>    ) </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>    EntityDeclarativeItem* </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">END</tt></span> Identifier </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>InterfaceList </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> InterfaceElement (<span style="color:#0000FF"><tt class="ttfamily">;</tt></span> InterfaceElement)* </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>InterfaceElement </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> InterfaceSignalDeclaration | </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>InterfaceSignalDeclaration </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> [<span style="color:#0000FF"><tt class="ttfamily">SIGNAL</tt></span>] Identifier <span style="color:#0000FF"><tt class="ttfamily">:</tt></span> [Mode] SubtypeIndication </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>Mode </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">IN</tt></span> | <span style="color:#0000FF"><tt class="ttfamily">OUT</tt></span> | <span style="color:#0000FF"><tt class="ttfamily">INOUT</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>SubtypeIndication </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> Name </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>EntityDeclarativeItem </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> TypeDeclaration </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>TypeDeclaration </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> FullTypeDeclaration </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>FullTypeDeclaration </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">TYPE</tt></span> Identifier <span style="color:#0000FF"><tt class="ttfamily">IS</tt></span> TypeDefinition <span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>TypeDefinition </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> ScalarTypeDefinition </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>ScalarTypeDefinition </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> EnumerationTypeDefinition </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>EnumerationTypeDefinition </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">(</tt></span> EnumerationLiteral (<span style="color:#0000FF"><tt class="ttfamily">,</tt></span> EnumerationLiteral)* <span style="color:#0000FF"><tt class="ttfamily">)</tt></span> </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>EnumeartionLiteral </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> Name </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>SecondaryUnit </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> ArchitectureBody </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>ArchitectureBody </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">ARCHITECTURE</tt></span> Identifier <span style="color:#0000FF"><tt class="ttfamily">OF</tt></span> Name <span style="color:#0000FF"><tt class="ttfamily">IS</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>    BlockDeclarativeItem* </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">BEGIN</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>    ConcurrentStatement* </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">END</tt></span> Name <span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>BlockDeclarativeItem </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> TypeDeclaration </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>ConcurrentStatement </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> ProcessStatement </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>ProcessStatement </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">PROCESS</tt></span> [<span style="color:#0000FF"><tt class="ttfamily">(</tt></span> SignalName* <span style="color:#0000FF"><tt class="ttfamily">)</tt></span>] <span style="color:#0000FF"><tt class="ttfamily">IS</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>    ProcessDeclarativeItem* </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">BEGIN</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>    SequentialStatement* </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">END</tt></span> <span style="color:#0000FF"><tt class="ttfamily">PROCESS</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>SignalName </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> Name </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>ProcessDeclarativeItem </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> TypeDeclaration </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>SequentialStatement </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> AssertionStatement | </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p> SignalAssignmentStatement | </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p> IfStatement | </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p> CaseStatement </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>AssertionStatement </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">ASSERT</tt></span> Assertion </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>Assertion </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> BooleanExpression </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>SignalAssignmentStatement </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> Target &lt;– Waveform </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>IfStatement </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> IfClause </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p> ElsifClause* </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p> [ElseClause] </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>IfClause </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">IF</tt></span> BooleanExpression <span style="color:#0000FF"><tt class="ttfamily">THEN</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>    SequentialStatement* </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>ElsifClause </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">ELSIF</tt></span> BooleanExpression <span style="color:#0000FF"><tt class="ttfamily">THEN</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>    SequentialStatement* </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>ElseClause </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">ELSE</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>    SequentialStatement* </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>CaseStatement </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">CASE</tt></span> Expression <span style="color:#0000FF"><tt class="ttfamily">IS</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>    CaseStatementAlternative+ </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">END</tt></span> <span style="color:#0000FF"><tt class="ttfamily">CASE</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>CaseStatementAlternative </p></td>
+
+    
+    <td style="text-align:left"><p> ::= </p></td>
+
+    
+    <td style="text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">WHEN</tt></span> Label <span style="color:#0000FF"><tt class="ttfamily">=&gt;</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>    SequentialStatement* </p></td>
+
+</tr>
+</table></small></tt> </p></div>
+
+
+
+<div class="navigation">
+<div class="online-navigation">
+<hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class="online-navigation"><a title="2 Concepts" href="sec-vhdl-concepts.html" rel="prev"><img src="icons/previous.png" border="0" height="32" alt="Previous Page" width="32" /></a></td>
+<td class="online-navigation"><a title="2 Concepts" href="sec-vhdl-concepts.html" rel="parent"><img src="icons/up.png" border="0" height="32" alt="Up One Level" width="32" /></a></td>
+<td class="online-navigation"><a title="VXMI" href="sec-vhdl-vxmi.html" rel="next"><img src="icons/next.png" border="0" height="32" alt="Next Page" width="32" /></a></td>
+<td align="center" width="100%">CODA VHDL Generator User Manual</td>
+<td class="online-navigation"><a href="index.html" rel="contents" title="Table of Contents"><img src="icons/contents.png" border="0" height="32" alt="Contents" width="32" /></a></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" width="32" /></td>
+</tr></table>
+<div class="online-navigation">
+<span><b class="navlabel">Previous:</b>
+<a href="sec-vhdl-concepts.html" class="sectref" rel="prev">Concepts</a></span>
+<span><b class="navlabel">Up:</b>
+<a href="sec-vhdl-concepts.html" class="sectref" rel="parent">Concepts</a></span>
+<span><b class="navlabel">Next:</b>
+<a href="sec-vhdl-vxmi.html" class="sectref" rel="next">VXMI</a></span>
+</div>
+</div>
+<hr />
+<!--
+<span class="release-info">Release 2.4.3, documentation updated on 29 March 2006.</span>
+-->
+</div>
+<!--End of Navigation Panel-->
+<!--
+<address>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</address>
+-->
+</body>
+</html>

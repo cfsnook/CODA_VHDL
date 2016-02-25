@@ -1,0 +1,610 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="shortcut icon" href="icons/pyfav.png" type="image/png" />
+<link href="index.html" title="CODA VHDL Generator User Manual" rel="start" />
+<link href="index.html" title="CODA VHDL Generator User Manual" rel="first" />
+<link href="index.html" rel="contents" title="Contents" />
+<link rel="index" title="Index" />
+<link href="sec-vhdl-tasks.html" rel="next" />
+<link href="sec-vhdl-behavioural.html" rel="prev" />
+<link href="sec-vhdl-concepts.html" rel="parent" />
+<meta name="aesop" content="information" />
+<title>2.2 VXMI</title>
+</head>
+<body>
+<div class="navigation">
+<div id="top-navigation-panel" xml:id="top-navigation-panel">
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class="online-navigation"><a title="2.1 Behavioural VHDL" href="sec-vhdl-behavioural.html" rel="prev"><img src="icons/previous.png" border="0" height="32" alt="Previous Page" width="32" /></a></td>
+<td class="online-navigation"><a title="2 Concepts" href="sec-vhdl-concepts.html" rel="parent"><img src="icons/up.png" border="0" height="32" alt="Up One Level" width="32" /></a></td>
+<td class="online-navigation"><a title="Tasks" href="sec-vhdl-tasks.html" rel="next"><img src="icons/next.png" border="0" height="32" alt="Next Page" width="32" /></a></td>
+<td align="center" width="100%">CODA VHDL Generator User Manual</td>
+<td class="online-navigation"><a href="index.html" rel="contents" title="Table of Contents"><img src="icons/contents.png" border="0" height="32" alt="Contents" width="32" /></a></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" width="32" /></td>
+</tr></table>
+<div class="online-navigation">
+<span><b class="navlabel">Previous:</b>
+<a href="sec-vhdl-behavioural.html" class="sectref" rel="prev">Behavioural VHDL</a></span>
+<span><b class="navlabel">Up:</b>
+<a href="sec-vhdl-concepts.html" class="sectref" rel="parent">Concepts</a></span>
+<span><b class="navlabel">Next:</b>
+<a href="sec-vhdl-tasks.html" class="sectref" rel="next">Tasks</a></span>
+</div>
+<hr /></div>
+</div>
+
+
+
+<div><h2 id="sec:vhdl-vxmi">2.2 VXMI</h2>
+<p>  A VXMI model is a representation of a VHDL model in XML. The following are example of how a VHDL snippet is represented in a tree-shaped structured VXMI. </p><p><tt class="ttfamily"><small class="scriptsize"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left"><p>  VHDL </p></td>
+
+    
+    <td style="border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left">&nbsp;</td>
+
+    
+    <td style="border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left"><p> VXMI </p></td>
+
+</tr><tr>
+
+    
+    <td style="border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left">&nbsp;</td>
+
+    
+    <td style="border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left">&nbsp;</td>
+
+    
+    <td style="border-top-style:solid; border-top-color:black; border-top-width:1px; text-align:left"><p> <span style="color:#0000FF"><tt class="ttfamily">DesignFile</tt></span> Example </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>    <span style="color:#0000FF"><tt class="ttfamily">DesignUnit</tt></span> </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#0000FF"><tt class="ttfamily">LIBRARY</tt></span> ieee<span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>       <span style="color:#0000FF"><tt class="ttfamily">LibraryClause</tt></span> </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>          <span style="color:#0000FF"><tt class="ttfamily">LogicalName</tt></span> ieee </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#0000FF"><tt class="ttfamily">USE</tt></span> ieee.std_logic_1164.all<span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>       <span style="color:#0000FF"><tt class="ttfamily">UseClause</tt></span> </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>          <span style="color:#0000FF"><tt class="ttfamily">SelectedName</tt></span> ieee.std_logic_1164.all </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#0000FF"><tt class="ttfamily">USE</tt></span> ieee.std_logic_unsigned.all <span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>       <span style="color:#0000FF"><tt class="ttfamily">UseClause</tt></span> </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>          <span style="color:#0000FF"><tt class="ttfamily">SelectedName</tt></span> ieee.std_logic_unsigned.all </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#0000FF"><tt class="ttfamily">ENTITY</tt></span> Example <span style="color:#0000FF"><tt class="ttfamily">IS</tt></span> </p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>       <span style="color:#0000FF"><tt class="ttfamily">EntityDeclaration</tt></span> Example </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   <span style="color:#0000FF"><tt class="ttfamily">PORT</tt></span> <span style="color:#0000FF"><tt class="ttfamily">(</tt></span></p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>          <span style="color:#0000FF"><tt class="ttfamily">InterfaceList</tt></span> </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      clk <span style="color:#0000FF"><tt class="ttfamily">:</tt></span> <span style="color:#0000FF"><tt class="ttfamily">IN</tt></span> std_logic<span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>             <span style="color:#0000FF"><tt class="ttfamily">InterfaceSignalDeclaration</tt></span> clk </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>                (<span style="color:#0000FF"><tt class="ttfamily">Mode</tt></span> IN_LITERAL)</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>                (<span style="color:#0000FF"><tt class="ttfamily">Signal</tt></span> false)</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>                <span style="color:#0000FF"><tt class="ttfamily">SubtypeIndication</tt></span> std_logic </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      reset <span style="color:#0000FF"><tt class="ttfamily">:</tt></span> <span style="color:#0000FF"><tt class="ttfamily">IN</tt></span> std_logic<span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>             <span style="color:#0000FF"><tt class="ttfamily">InterfaceSignalDeclaration</tt></span> reset </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>                (<span style="color:#0000FF"><tt class="ttfamily">Mode</tt></span> IN_LITERAL)</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>                (<span style="color:#0000FF"><tt class="ttfamily">Signal</tt></span> false)</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>                <span style="color:#0000FF"><tt class="ttfamily">SubtypeIndication</tt></span> std_logic </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   <span style="color:#0000FF"><tt class="ttfamily">)</tt></span><span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   <span style="color:#0000FF"><tt class="ttfamily">TYPE</tt></span> BOOL <span style="color:#0000FF"><tt class="ttfamily">IS</tt></span> <span style="color:#0000FF"><tt class="ttfamily">(</tt></span>TRUE<span style="color:#0000FF"><tt class="ttfamily">,</tt></span> FALSE<span style="color:#0000FF"><tt class="ttfamily">)</tt></span><span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>          <span style="color:#0000FF"><tt class="ttfamily">FullTypeDeclaration</tt></span> BOOL </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>             <span style="color:#0000FF"><tt class="ttfamily">EnumerationTypeDefinition</tt></span> </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>                <span style="color:#0000FF"><tt class="ttfamily">EnumerationLiteral</tt></span> TRUE </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>                <span style="color:#0000FF"><tt class="ttfamily">EnumerationLiteral</tt></span> FALSE </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#0000FF"><tt class="ttfamily">END</tt></span> Example<span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>    <span style="color:#0000FF"><tt class="ttfamily">DesignUnit</tt></span> </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#0000FF"><tt class="ttfamily">ARCHITECTURE</tt></span> behaviour <span style="color:#0000FF"><tt class="ttfamily">OF</tt></span> Example <span style="color:#0000FF"><tt class="ttfamily">IS</tt></span></p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>       <span style="color:#0000FF"><tt class="ttfamily">ArchitectureBody</tt></span> Example </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>          (<span style="color:#0000FF"><tt class="ttfamily">Identifier</tt></span> behaviour) </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   <span style="color:#0000FF"><tt class="ttfamily">SIGNAL</tt></span> enabled <span style="color:#0000FF"><tt class="ttfamily">:</tt></span> BOOL<span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>          <span style="color:#0000FF"><tt class="ttfamily">InterfaceSignalDeclaration</tt></span> enabled </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>                (<span style="color:#0000FF"><tt class="ttfamily">Signal</tt></span> true)</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>                <span style="color:#0000FF"><tt class="ttfamily">SubtypeIndication</tt></span> BOOL </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   <span style="color:#0000FF"><tt class="ttfamily">SIGNAL</tt></span> cnt <span style="color:#0000FF"><tt class="ttfamily">:</tt></span> int <span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>          <span style="color:#0000FF"><tt class="ttfamily">InterfaceSignalDeclaration</tt></span> cnt </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>                (<span style="color:#0000FF"><tt class="ttfamily">Signal</tt></span> true)</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>                <span style="color:#0000FF"><tt class="ttfamily">SubtypeIndication</tt></span> int </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#0000FF"><tt class="ttfamily">BEGIN</tt></span></p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   <span style="color:#0000FF"><tt class="ttfamily">PROCESS</tt></span> <span style="color:#0000FF"><tt class="ttfamily">OF</tt></span> <span style="color:#0000FF"><tt class="ttfamily">(</tt></span>clk<span style="color:#0000FF"><tt class="ttfamily">,</tt></span> reset <span style="color:#0000FF"><tt class="ttfamily">)</tt></span></p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>       <span style="color:#0000FF"><tt class="ttfamily">ProcessStatement</tt></span> </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>          <span style="color:#0000FF"><tt class="ttfamily">SignalName</tt></span> clk</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>          <span style="color:#0000FF"><tt class="ttfamily">SignalName</tt></span> reset</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   <span style="color:#0000FF"><tt class="ttfamily">BEGIN</tt></span></p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      <span style="color:#0000FF"><tt class="ttfamily">IF</tt></span> <span style="color:#0000FF"><tt class="ttfamily">(</tt></span>reset = ’1’<span style="color:#0000FF"><tt class="ttfamily">)</tt></span> <span style="color:#0000FF"><tt class="ttfamily">THEN</tt></span></p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>          <span style="color:#0000FF"><tt class="ttfamily">IfStatement</tt></span> </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>             <span style="color:#0000FF"><tt class="ttfamily">IfClause</tt></span> reset = ’1’ </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>         enabled &lt;= FALSE </p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>                <span style="color:#0000FF"><tt class="ttfamily">SignalAssignmentStatement</tt></span> enabled </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>                   <span style="color:#0000FF"><tt class="ttfamily">Waveform</tt></span> FALSE </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      <span style="color:#0000FF"><tt class="ttfamily">ELSIF</tt></span> <span style="color:#0000FF"><tt class="ttfamily">(</tt></span>raising_edge(clk)<span style="color:#0000FF"><tt class="ttfamily">)</tt></span> <span style="color:#0000FF"><tt class="ttfamily">THEN</tt></span></p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>             <span style="color:#0000FF"><tt class="ttfamily">ElsifClause</tt></span> raising_edge(clk) </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>         cnt &lt;= cnt + 1 </p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>                <span style="color:#0000FF"><tt class="ttfamily">SignalAssignmentStatement</tt></span> cnt </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left"><p>                   <span style="color:#0000FF"><tt class="ttfamily">Waveform</tt></span> cnt + 1 </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      <span style="color:#0000FF"><tt class="ttfamily">END</tt></span> <span style="color:#0000FF"><tt class="ttfamily">IF</tt></span><span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>   <span style="color:#0000FF"><tt class="ttfamily">END</tt></span> <span style="color:#0000FF"><tt class="ttfamily">PROCESS</tt></span><span style="color:#0000FF"><tt class="ttfamily">;</tt></span></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#0000FF"><tt class="ttfamily">END</tt></span></p></td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+    
+    <td style="text-align:left">&nbsp;</td>
+
+</tr>
+</table></small></tt> </p></div>
+
+
+
+<div class="navigation">
+<div class="online-navigation">
+<hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class="online-navigation"><a title="2.1 Behavioural VHDL" href="sec-vhdl-behavioural.html" rel="prev"><img src="icons/previous.png" border="0" height="32" alt="Previous Page" width="32" /></a></td>
+<td class="online-navigation"><a title="2 Concepts" href="sec-vhdl-concepts.html" rel="parent"><img src="icons/up.png" border="0" height="32" alt="Up One Level" width="32" /></a></td>
+<td class="online-navigation"><a title="Tasks" href="sec-vhdl-tasks.html" rel="next"><img src="icons/next.png" border="0" height="32" alt="Next Page" width="32" /></a></td>
+<td align="center" width="100%">CODA VHDL Generator User Manual</td>
+<td class="online-navigation"><a href="index.html" rel="contents" title="Table of Contents"><img src="icons/contents.png" border="0" height="32" alt="Contents" width="32" /></a></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" width="32" /></td>
+</tr></table>
+<div class="online-navigation">
+<span><b class="navlabel">Previous:</b>
+<a href="sec-vhdl-behavioural.html" class="sectref" rel="prev">Behavioural VHDL</a></span>
+<span><b class="navlabel">Up:</b>
+<a href="sec-vhdl-concepts.html" class="sectref" rel="parent">Concepts</a></span>
+<span><b class="navlabel">Next:</b>
+<a href="sec-vhdl-tasks.html" class="sectref" rel="next">Tasks</a></span>
+</div>
+</div>
+<hr />
+<!--
+<span class="release-info">Release 2.4.3, documentation updated on 29 March 2006.</span>
+-->
+</div>
+<!--End of Navigation Panel-->
+<!--
+<address>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</address>
+-->
+</body>
+</html>

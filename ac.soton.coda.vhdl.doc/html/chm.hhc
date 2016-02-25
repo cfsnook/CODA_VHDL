@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="plasTeX - http://plastex.sf.net/">
+<!-- Sitemap 1.0 -->
+</head>
+<body>
+<object type="text/site properties">
+   <param name="Auto Generated" value="Yes">
+</object>
+<ul>
+    <li><object type="text/sitemap">
+        <param name="Name" value="CODA VHDL Generator User Manual">
+        <param name="Local" value="index.html">
+        
+    </object></li>
+    <ul>
+      
+      <li><object type="text/sitemap">
+          <param name="Name" value="Getting Started">
+          <param name="Local" value="sec-vhdl-getting-started.html">
+          
+      </object></li>
+      <ul>
+         
+         <li><object type="text/sitemap">
+             <param name="Name" value="Generating Behavioural VHDL Tutorial">
+             <param name="Local" value="sec-vhdl-generate-behavioural-model-tutorial.html">
+             <param name="ImageNumber" value="11">
+         </object></li>
+         
+         
+      </ul>
+      
+      <li><object type="text/sitemap">
+          <param name="Name" value="Concepts">
+          <param name="Local" value="sec-vhdl-concepts.html">
+          
+      </object></li>
+      <ul>
+         
+         <li><object type="text/sitemap">
+             <param name="Name" value="Behavioural VHDL">
+             <param name="Local" value="sec-vhdl-behavioural.html">
+             <param name="ImageNumber" value="11">
+         </object></li>
+         
+         
+         <li><object type="text/sitemap">
+             <param name="Name" value="VXMI">
+             <param name="Local" value="sec-vhdl-vxmi.html">
+             <param name="ImageNumber" value="11">
+         </object></li>
+         
+         
+      </ul>
+      
+      <li><object type="text/sitemap">
+          <param name="Name" value="Tasks">
+          <param name="Local" value="sec-vhdl-tasks.html">
+          
+      </object></li>
+      <ul>
+         
+         <li><object type="text/sitemap">
+             <param name="Name" value="Translating CODA models into VHDL">
+             <param name="Local" value="sec-transl-coda-2-vxmi.html">
+             <param name="ImageNumber" value="11">
+         </object></li>
+         
+         
+      </ul>
+      
+      <li><object type="text/sitemap">
+          <param name="Name" value="Reference">
+          <param name="Local" value="sec-vhdl-reference.html">
+          <param name="ImageNumber" value="11">
+      </object></li>
+      
+      
+      <li><object type="text/sitemap">
+          <param name="Name" value="Samples">
+          <param name="Local" value="sec-vhdl-samples.html">
+          <param name="ImageNumber" value="11">
+      </object></li>
+      
+      
+      <li><object type="text/sitemap">
+          <param name="Name" value="Legal">
+          <param name="Local" value="sec-vhdl-legal.html">
+          
+      </object></li>
+      <ul>
+         
+         <li><object type="text/sitemap">
+             <param name="Name" value="CODA Software User Agreement">
+             <param name="Local" value="sec-vhdl-user-agreement.html">
+             <param name="ImageNumber" value="11">
+         </object></li>
+         
+         
+      </ul>
+      
+    </ul>
+</ul>
+</body>
+</html>
