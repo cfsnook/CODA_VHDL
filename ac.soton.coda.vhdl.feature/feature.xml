@@ -2,7 +2,7 @@
 <feature
       id="ac.soton.coda.vhdl.feature"
       label="%featureName"
-      version="0.0.2.release"
+      version="0.0.3.release"
       provider-name="%featureVendor"
       plugin="ac.soton.coda.vhdl.branding"
       license-feature="ac.soton.coda.licence"
@@ -100,5 +100,11 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+
+   <plugin
+         id="ac.soton.coda.vhdl.doc"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
 
 </feature>
