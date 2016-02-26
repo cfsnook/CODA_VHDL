@@ -16,16 +16,16 @@ Help="CODA VHDL Generator User Manual","chm.hhc","chm.hhk","index.html","index.h
 
 [FILES]
 sec-vhdl-generate-behavioural-model-tutorial.html
-sec-transl-coda-2-vxmi.html
 sec-vhdl-tasks.html
-sec-vhdl-legal.html
+sec-vhdl-user-agreement.html
 sec-vhdl-samples.html
 index.html
 sec-vhdl-getting-started.html
+sec-transl-coda-2-vxmi.html
 sec-vhdl-reference.html
 sec-vhdl-concepts.html
 sec-vhdl-behavioural.html
-sec-vhdl-user-agreement.html
+sec-vhdl-legal.html
 sec-vhdl-vxmi.html
 
 
