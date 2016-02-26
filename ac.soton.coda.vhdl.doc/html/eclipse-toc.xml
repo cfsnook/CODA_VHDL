@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ISO-8859-1' ?>
-<toc label="CODA VHDL Generator User Manual" topic="html/index.html">
+<toc topic="html/index.html" label="CODA VHDL Generator User Manual">
     <topic label="Getting Started" href="html/sec-vhdl-getting-started.html">
        <topic label="Generating Behavioural VHDL Tutorial" href="html/sec-vhdl-generate-behavioural-model-tutorial.html" />
     </topic><topic label="Concepts" href="html/sec-vhdl-concepts.html">
