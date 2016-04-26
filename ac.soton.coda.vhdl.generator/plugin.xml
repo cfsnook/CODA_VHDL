@@ -124,6 +124,11 @@
             description="VXMI Translator description"
             id="ac.soton.coda.vhdl.generator.vxmiTranslator"
             name="Translate to VXMI">
+         <commandParameter
+               id="ac.soton.coda.vhdl.generator.commandParameter1"
+               name="name"
+               optional="true">
+         </commandParameter>
       </command>
       <command
             description="VHDL Translator description"
@@ -134,7 +139,7 @@
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            class="ac.soton.coda.internal.handlers.VXMITranlatorHandler"
+            class="ac.soton.emf.translator.handler.TranslateHandler"
             commandId="ac.soton.coda.vhdl.generator.vxmiTranslator">
       </handler>
       <handler

@@ -8,8 +8,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eventb.emf.core.machine.Event;
 
 import ac.soton.coda.vhdl.IVHDLGuardedStatementElement;
-import ac.soton.emf.translator.IRule;
 import ac.soton.emf.translator.TranslationDescriptor;
+import ac.soton.emf.translator.configuration.IRule;
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.emf.components.DelayedDataPacket;
 import ac.soton.eventb.emf.components.OperationAction;

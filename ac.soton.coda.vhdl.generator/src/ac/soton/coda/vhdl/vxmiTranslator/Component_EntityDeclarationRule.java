@@ -7,8 +7,8 @@ import org.eclipse.emf.ecore.EObject;
 import ac.soton.coda.vhdl.IVHDLDesignUnit;
 import ac.soton.coda.vhdl.IVHDLEntityDeclaration;
 import ac.soton.coda.vhdl.custom.VHDLUtils;
-import ac.soton.emf.translator.IRule;
 import ac.soton.emf.translator.TranslationDescriptor;
+import ac.soton.emf.translator.configuration.IRule;
 import ac.soton.eventb.emf.components.Component;
 
 public class Component_EntityDeclarationRule extends AbstractVHDLRule implements

@@ -6,8 +6,8 @@ import org.eclipse.emf.ecore.EObject;
 
 import ac.soton.coda.vhdl.IVHDLElsifClause;
 import ac.soton.coda.vhdl.custom.VHDLUtils;
-import ac.soton.emf.translator.IRule;
 import ac.soton.emf.translator.TranslationDescriptor;
+import ac.soton.emf.translator.configuration.IRule;
 import ac.soton.eventb.statemachines.Statemachine;
 
 public class Statemachine_StateUpdateRule extends AbstractVHDLRule implements IRule {

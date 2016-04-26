@@ -7,8 +7,8 @@ import org.eclipse.emf.ecore.EObject;
 
 import ac.soton.coda.vhdl.IVHDLIfClause;
 import ac.soton.coda.vhdl.custom.VHDLUtils;
-import ac.soton.emf.translator.IRule;
 import ac.soton.emf.translator.TranslationDescriptor;
+import ac.soton.emf.translator.configuration.IRule;
 import ac.soton.eventb.statemachines.AbstractNode;
 import ac.soton.eventb.statemachines.Initial;
 import ac.soton.eventb.statemachines.State;

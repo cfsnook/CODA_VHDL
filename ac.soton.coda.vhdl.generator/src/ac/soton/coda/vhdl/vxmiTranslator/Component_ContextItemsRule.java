@@ -6,8 +6,8 @@ import org.eclipse.emf.ecore.EObject;
 
 import ac.soton.coda.vhdl.IVHDLDesignUnit;
 import ac.soton.coda.vhdl.custom.VHDLUtils;
-import ac.soton.emf.translator.IRule;
 import ac.soton.emf.translator.TranslationDescriptor;
+import ac.soton.emf.translator.configuration.IRule;
 
 public class Component_ContextItemsRule extends AbstractVHDLRule implements
 		IRule {
