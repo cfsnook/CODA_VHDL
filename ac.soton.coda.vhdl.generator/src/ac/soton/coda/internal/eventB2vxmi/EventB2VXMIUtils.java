@@ -9,7 +9,7 @@
  *     University of Southampton - initial API and implementation
  *******************************************************************************/
 
-package ac.soton.coda.internal.vhdl.utils;
+package ac.soton.coda.internal.eventB2vxmi;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -21,6 +21,8 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eventb.emf.core.machine.Machine;
 
+import ac.soton.coda.internal.vhdl.utils.VHDLResourceUtils;
+import ac.soton.coda.internal.vhdl.wizards.ExportVHDLBehaviouralModelWizard;
 import ac.soton.coda.internal.vxmi2vhdl.IVHDLLibrary;
 import ac.soton.coda.internal.vxmi2vhdl.VHDLLibrary;
 import ac.soton.eventb.emf.components.Component;
@@ -29,15 +31,16 @@ import ac.soton.eventb.emf.components.util.ComponentsUtils;
 
 /**
  * <p>
- *
+ * This class contains utility methods for translating Event-B Component model
+ * to VXMI.
  * </p>
  *
  * @author htson
- * @version
- * @see
- * @since
+ * @version 0.1
+ * @see ExportVHDLBehaviouralModelWizard
+ * @since 0.0.4
  */
-public class VHDLBehaviouralModelGeneratorUtils {
+public class EventB2VXMIUtils {
 
 	/**
 	 * @param component

@@ -12,7 +12,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.persistence.EMFRodinDB;
 
-import ac.soton.coda.internal.vhdl.utils.VHDLBehaviouralModelGeneratorUtils;
+import ac.soton.coda.internal.eventB2vxmi.EventB2VXMIUtils;
 import ac.soton.eventb.emf.components.Component;
 
 public class ExportVHDLBehaviouralModelWizard extends Wizard implements IExportWizard {
@@ -52,7 +52,7 @@ public class ExportVHDLBehaviouralModelWizard extends Wizard implements IExportW
 			getContainer().run(true, true, new IRunnableWithProgress() {
 				public void run(IProgressMonitor monitor) {
 					try {
-						VHDLBehaviouralModelGeneratorUtils
+						EventB2VXMIUtils
 								.perform(mch, component, monitor);
 					} catch (CoreException e) {
 						e.printStackTrace();
