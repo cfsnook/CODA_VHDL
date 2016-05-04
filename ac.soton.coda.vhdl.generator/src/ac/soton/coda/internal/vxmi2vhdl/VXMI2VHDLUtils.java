@@ -31,12 +31,14 @@ import ac.soton.coda.vhdl.IVHDLDesignFile;
 
 /**
  * <p>
- * This class contains utility methods for translating from VXMI to VHDL.
+ * This class contains utility methods for translating from VXMI to VHDL. In
+ * particular, it use the pretty printer {@link VXMI2VHDLPrettyPrinter} to
+ * translate from VXMI to VHDL.
  * </p>
  *
  * @author htson
  * @version 0.1
- * @see
+ * @see IVXMI2VHDLPrettyPrinter
  * @since 0.0.2
  */
 public class VXMI2VHDLUtils {

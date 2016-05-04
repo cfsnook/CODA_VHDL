@@ -11,12 +11,13 @@
 
 /**
  * <p>
- *
+ * Package containing interfaces and classes relevant for translating VXMI to VHDL.
  * </p>
  *
  * @author htson
- * @version
- * @see
- * @since
+ * @version 0.1
+ * @see ac.soton.coda.internal.vxmi2vhdl.IVXMI2VHDLPrettyPrinter
+ * @see ac.soton.coda.internal.vxmi2vhdl.VXMI2VHDLPrettyPrinter
+ * @since 0.0.4
  */
 package ac.soton.coda.internal.vxmi2vhdl;
