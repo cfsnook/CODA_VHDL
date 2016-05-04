@@ -40,7 +40,8 @@
 
 
 <div><h1 id="sec:vhdl-samples">5 Samples</h1>
-<p>The following VHDL code is generated for the <tt class="ttfamily">WM</tt> component of the Washing Machine example. </p><pre>
+<p>In order to generate code, port wake events have to be refined to use counters. Two counters <tt class="ttfamily">lockingCount</tt> and <tt class="ttfamily">unlockingCount</tt> are introduced. The statemachine WM are refined accordingly, by introducing the transitions that decreased the counter (see Figure <a href="sec-vhdl-samples.html#fig:m3-WM">3</a>). The guards of the old transition are refined accordingly using the counters. </p><div id="fig:m3-WM" class="figure"><center>
+<img src="images/img-0003.jpg" alt="\includegraphics[width=512]{figures/vhdl-WM-m3_WM}" style="width:512" /> <div class="caption"><b>Figure 3</b>: <span>Counters in the third refinement of WM</span></div>  </center></div><p>The following VHDL code is generated for the <tt class="ttfamily">WM</tt> component of the Washing Machine example. </p><pre>
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.std_logic_unsigned.all;
