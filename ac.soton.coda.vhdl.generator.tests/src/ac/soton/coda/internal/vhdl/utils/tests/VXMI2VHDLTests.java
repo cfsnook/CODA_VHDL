@@ -73,7 +73,7 @@ public class VXMI2VHDLTests extends TestCase {
 		IVHDLDesignUnit designUnit1 = vxmiSetup.getDesignUnit1();
 
 		sb = new StringBuffer();
-		prettyPrinter.prettyPrint(sb, designUnit1, 0);
+		prettyPrinter.prettyPrint(sb, designUnit1, 0, nullProgressMonitor);
 		assertEquals(
 				"class ac.soton.coda.vhdl.impl.VHDLLibraryClause indented by 0\n"
 						+ "class ac.soton.coda.vhdl.impl.VHDLUseClause indented by 0\n"
@@ -83,7 +83,7 @@ public class VXMI2VHDLTests extends TestCase {
 				sb.toString());
 
 		sb = new StringBuffer();
-		prettyPrinter.prettyPrint(sb, designUnit1, 1);
+		prettyPrinter.prettyPrint(sb, designUnit1, 1, nullProgressMonitor);
 		assertEquals(
 				"class ac.soton.coda.vhdl.impl.VHDLLibraryClause indented by 1\n"
 						+ "class ac.soton.coda.vhdl.impl.VHDLUseClause indented by 1\n"
@@ -93,7 +93,7 @@ public class VXMI2VHDLTests extends TestCase {
 				sb.toString());
 
 		sb = new StringBuffer();
-		prettyPrinter.prettyPrint(sb, designUnit1, 2);
+		prettyPrinter.prettyPrint(sb, designUnit1, 2, nullProgressMonitor);
 		assertEquals(
 				"class ac.soton.coda.vhdl.impl.VHDLLibraryClause indented by 2\n"
 						+ "class ac.soton.coda.vhdl.impl.VHDLUseClause indented by 2\n"
@@ -105,7 +105,7 @@ public class VXMI2VHDLTests extends TestCase {
 		IVHDLDesignUnit designUnit2 = vxmiSetup.getDesignUnit2();
 
 		sb = new StringBuffer();
-		prettyPrinter.prettyPrint(sb, designUnit2, 0);
+		prettyPrinter.prettyPrint(sb, designUnit2, 0, nullProgressMonitor);
 		assertEquals(
 				"\n" +
 				"\n" +
@@ -113,7 +113,7 @@ public class VXMI2VHDLTests extends TestCase {
 				sb.toString());
 
 		sb = new StringBuffer();
-		prettyPrinter.prettyPrint(sb, designUnit2, 1);
+		prettyPrinter.prettyPrint(sb, designUnit2, 1, nullProgressMonitor);
 		assertEquals(
 				"\n" +
 				"\n" +
@@ -121,7 +121,7 @@ public class VXMI2VHDLTests extends TestCase {
 				sb.toString());
 
 		sb = new StringBuffer();
-		prettyPrinter.prettyPrint(sb, designUnit2, 2);
+		prettyPrinter.prettyPrint(sb, designUnit2, 2, nullProgressMonitor);
 		assertEquals(
 				"\n" +
 				"\n" +

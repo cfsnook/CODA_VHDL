@@ -13,23 +13,31 @@ package ac.soton.coda.internal.vhdl.utils;
 
 /**
  * <p>
- *
+ * A common interface representing a VHDL library. Each VHDL library has a name
+ * and a list of packages.
  * </p>
  *
  * @author htson
- * @version
- * @see
- * @since
+ * @version 0.1
+ * @see VHDLLibrary
+ * @since 0.0.2
+ * @noimplement This interface is not intended to be implemented by clients.
+ * @noextend This interface is not intended to be extended by clients.
  */
 public interface IVHDLLibrary {
 
 	/**
-	 * @return
+	 * Returns the name of the library.
+	 * 
+	 * @return the name of the library.
 	 */
-	public String getLibrary();
+	public String getName();
 
 	/**
-	 * @return
+	 * Returns the list of packages of the library.
+	 * 
+	 * @return the list of packages of the library
+	 * @postcondition the returned value is not <code>null</code>
 	 */
 	public String[] getPackages();
 

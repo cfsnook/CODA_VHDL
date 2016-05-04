@@ -13,42 +13,51 @@ package ac.soton.coda.internal.vhdl.utils;
 
 /**
  * <p>
- *
+ * An implementation representing a VHDL library.
  * </p>
  *
  * @author htson
- * @version
- * @see
- * @since
+ * @version 0.1
+ * @see VXMI2VHDLPrettyPrinter
+ * @since 0.0.2
+ * @noextend This class is not intended to be subclassed by clients.
  */
 public class VHDLLibrary implements IVHDLLibrary {
 
-	private String library;
+	// The name of the library
+	private String name;
 
+	// The list of packages of the library. This must not be null
 	private String[] packages;
 
 	/**
-	 * @param string
+	 * Constructor to construct a VHDL library with a given name and a list of
+	 * packages.
+	 * 
+	 * @param name
+	 *            the name of the library
+	 * @param packages
+	 *            the list of packages.
 	 */
-	public VHDLLibrary(String library, String... packages) {
-		this.library = library;
+	public VHDLLibrary(String name, String... packages) {
+		this.name = name;
 		this.packages = packages;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see VHDLTestBenchGenerator.IVHDLLibrary#getLibrary()
+	 * @see IVHDLLibrary#getLibrary()
 	 */
 	@Override
-	public String getLibrary() {
-		return library;
+	public String getName() {
+		return name;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see VHDLTestBenchGenerator.IVHDLLibrary#getPackages()
+	 * @see IVHDLLibrary#getPackages()
 	 */
 	@Override
 	public String[] getPackages() {

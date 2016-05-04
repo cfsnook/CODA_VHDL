@@ -81,7 +81,7 @@ public class VHDLResourceUtils {
 			// Split the monitor according to the number of library input.
 			SubMonitor subMonitor = SubMonitor.convert(monitor, noLibraries);
 			for (IVHDLLibrary library : libraries) {
-				sb.append("LIBRARY " + library.getLibrary() + ";\n");
+				sb.append("LIBRARY " + library.getName() + ";\n");
 				String[] packages = library.getPackages();
 				for (String pk : packages) {
 					sb.append("USE " + pk + ";\n");

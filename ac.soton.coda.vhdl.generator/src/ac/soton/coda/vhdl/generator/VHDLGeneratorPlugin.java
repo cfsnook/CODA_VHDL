@@ -17,6 +17,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
+import ac.soton.coda.internal.vhdl.utils.VHDLGeneratorUtils;
 import ac.soton.coda.vhdl.vxmiTranslator.VXMITranslatorUtils;
 
 /**
@@ -58,7 +59,7 @@ public class VHDLGeneratorPlugin extends AbstractUIPlugin {
 	 * Process debugging/tracing options coming from Eclipse.
 	 */
 	private void configureDebugOptions() {
-//		Utils.DEBUG = parseOption(GLOBAL_TRACE);
+		VHDLGeneratorUtils.DEBUG = parseOption(GLOBAL_TRACE);
 		VXMITranslatorUtils.DEBUG = parseOption(VXMI_TRANSLATOR_TRACE);
 	}
 

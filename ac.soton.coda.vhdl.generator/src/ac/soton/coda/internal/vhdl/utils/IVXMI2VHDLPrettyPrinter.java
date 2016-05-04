@@ -30,61 +30,340 @@ import ac.soton.coda.vhdl.IVHDLSequentialStatement;
 
 /**
  * <p>
- *
+ * A common interface for VXMI to VHDL pretty printer.
  * </p>
  *
  * @author htson
- * @version
- * @see
- * @since
+ * @version 0.1
+ * @see VXMI2VHDLPrettyPrinter
+ * @since 0.0.2
  */
 public interface IVXMI2VHDLPrettyPrinter {
 
+	/**
+	 * Pretty print a VHDL design file and its contents. The result is appended
+	 * to the input string buffer.
+	 * 
+	 * @param sb
+	 *            the input string buffer
+	 * @param designFile
+	 *            the input VHDL design file.
+	 * @param indentLevel
+	 *            the indent level for pretty print result.
+	 * @param monitor
+	 *            the progress monitor to use for reporting progress to the
+	 *            user. It is the caller's responsibility to call done() on the
+	 *            given monitor. Accepts <code>null</code>, indicating that no
+	 *            progress should be reported and that the operation cannot be
+	 *            cancelled.
+	 */
 	public void prettyPrint(StringBuffer sb, IVHDLDesignFile designFile,
 			int indentLevel, IProgressMonitor monitor);
 
+	/**
+	 * Pretty print a VHDL design unit and its contents. The result is appended
+	 * to the input string buffer. This method is called as a part of pretty
+	 * print the full VHDL design file. This method is <code>public</code> for
+	 * testing purpose only.
+	 * 
+	 * @param sb
+	 *            the input string buffer
+	 * @param designUnit
+	 *            the input VHDL design unit.
+	 * @param indentLevel
+	 *            the indent level for pretty print result.
+	 * @param monitor
+	 *            the progress monitor to use for reporting progress to the
+	 *            user. It is the caller's responsibility to call done() on the
+	 *            given monitor. Accepts <code>null</code>, indicating that no
+	 *            progress should be reported and that the operation cannot be
+	 *            cancelled.
+	 * @see #prettyPrint(StringBuffer, IVHDLDesignFile, int, IProgressMonitor)
+	 */
 	public void prettyPrint(StringBuffer sb, IVHDLDesignUnit designUnit,
-			int indentLevel);
+			int indentLevel, IProgressMonitor monitor);
 
 	/**
+	 * Pretty print a VHDL context item and its contents. The result is appended
+	 * to the input string buffer. This method is called as a part of pretty
+	 * print the full VHDL design file. This method is <code>public</code> for
+	 * testing purpose only.
+	 * 
 	 * @param sb
+	 *            the input string buffer
 	 * @param contextItem
+	 *            the input VHDL context item.
 	 * @param indentLevel
+	 *            the indent level for pretty print result.
+	 * @param monitor
+	 *            the progress monitor to use for reporting progress to the
+	 *            user. It is the caller's responsibility to call done() on the
+	 *            given monitor. Accepts <code>null</code>, indicating that no
+	 *            progress should be reported and that the operation cannot be
+	 *            cancelled.
+	 * @see #prettyPrint(StringBuffer, IVHDLDesignFile, int, IProgressMonitor)
 	 */
 	public void prettyPrint(StringBuffer sb, IVHDLContextItem contextItem,
-			int indentLevel);
+			int indentLevel, IProgressMonitor monitor);
 	
+	/**
+	 * Pretty print a VHDL library unit and its contents. The result is appended
+	 * to the input string buffer. This method is called as a part of pretty
+	 * print the full VHDL design file. This method is <code>public</code> for
+	 * testing purpose only.
+	 * 
+	 * @param sb
+	 *            the input string buffer
+	 * @param libraryUnit
+	 *            the input VHDL library unit.
+	 * @param indentLevel
+	 *            the indent level for pretty print result.
+	 * @param monitor
+	 *            the progress monitor to use for reporting progress to the
+	 *            user. It is the caller's responsibility to call done() on the
+	 *            given monitor. Accepts <code>null</code>, indicating that no
+	 *            progress should be reported and that the operation cannot be
+	 *            cancelled.
+	 * @see #prettyPrint(StringBuffer, IVHDLDesignFile, int, IProgressMonitor)
+	 */
 	public void prettyPrint(StringBuffer sb, IVHDLLibraryUnit libraryUnit,
-			int indentLevel);
+			int indentLevel, IProgressMonitor monitor);
 
+	/**
+	 * Pretty print a VHDL interface element and its contents. The result is appended
+	 * to the input string buffer. This method is called as a part of pretty
+	 * print the full VHDL design file. This method is <code>public</code> for
+	 * testing purpose only.
+	 * 
+	 * @param sb
+	 *            the input string buffer
+	 * @param interfaceElement
+	 *            the input VHDL interface element.
+	 * @param indentLevel
+	 *            the indent level for pretty print result.
+	 * @param monitor
+	 *            the progress monitor to use for reporting progress to the
+	 *            user. It is the caller's responsibility to call done() on the
+	 *            given monitor. Accepts <code>null</code>, indicating that no
+	 *            progress should be reported and that the operation cannot be
+	 *            cancelled.
+	 * @see #prettyPrint(StringBuffer, IVHDLDesignFile, int, IProgressMonitor)
+	 */
 	public void prettyPrint(StringBuffer sb,
-			IVHDLInterfaceElement interfaceElement, int indentLevel);
+			IVHDLInterfaceElement interfaceElement, int indentLevel,
+			IProgressMonitor monitor);
 
+	/**
+	 * Pretty print a VHDL entity declarative item and its contents. The result
+	 * is appended to the input string buffer. This method is called as a part
+	 * of pretty print the full VHDL design file. This method is
+	 * <code>public</code> for testing purpose only.
+	 * 
+	 * @param sb
+	 *            the input string buffer
+	 * @param entityDeclarativeItem
+	 *            the input VHDL entity declarative item.
+	 * @param indentLevel
+	 *            the indent level for pretty print result.
+	 * @param monitor
+	 *            the progress monitor to use for reporting progress to the
+	 *            user. It is the caller's responsibility to call done() on the
+	 *            given monitor. Accepts <code>null</code>, indicating that no
+	 *            progress should be reported and that the operation cannot be
+	 *            cancelled.
+	 * @see #prettyPrint(StringBuffer, IVHDLDesignFile, int, IProgressMonitor)
+	 */
 	public void prettyPrint(StringBuffer sb,
-			IVHDLEntityDeclarativeItem entityDeclarativeItem, int indentLevel);
+			IVHDLEntityDeclarativeItem entityDeclarativeItem, int indentLevel,
+			IProgressMonitor monitor);
 
+	/**
+	 * Pretty print a VHDL block declarative item and its contents. The result
+	 * is appended to the input string buffer. This method is called as a part
+	 * of pretty print the full VHDL design file. This method is
+	 * <code>public</code> for testing purpose only.
+	 * 
+	 * @param sb
+	 *            the input string buffer
+	 * @param blockDeclarativeItem
+	 *            the input VHDL block declarative item.
+	 * @param indentLevel
+	 *            the indent level for pretty print result.
+	 * @param monitor
+	 *            the progress monitor to use for reporting progress to the
+	 *            user. It is the caller's responsibility to call done() on the
+	 *            given monitor. Accepts <code>null</code>, indicating that no
+	 *            progress should be reported and that the operation cannot be
+	 *            cancelled.
+	 * @see #prettyPrint(StringBuffer, IVHDLDesignFile, int, IProgressMonitor)
+	 */
 	public void prettyPrint(StringBuffer sb,
-			IVHDLBlockDeclarativeItem blocDeclarativeItem, int indentLevel);
+			IVHDLBlockDeclarativeItem blockDeclarativeItem, int indentLevel,
+			IProgressMonitor monitor);
 
+	/**
+	 * Pretty print a VHDL concurrent statement and its contents. The result is
+	 * appended to the input string buffer. This method is called as a part of
+	 * pretty print the full VHDL design file. This method is
+	 * <code>public</code> for testing purpose only.
+	 * 
+	 * @param sb
+	 *            the input string buffer
+	 * @param concurrentStatement
+	 *            the input VHDL concurrent statement.
+	 * @param indentLevel
+	 *            the indent level for pretty print result.
+	 * @param monitor
+	 *            the progress monitor to use for reporting progress to the
+	 *            user. It is the caller's responsibility to call done() on the
+	 *            given monitor. Accepts <code>null</code>, indicating that no
+	 *            progress should be reported and that the operation cannot be
+	 *            cancelled.
+	 * @see #prettyPrint(StringBuffer, IVHDLDesignFile, int, IProgressMonitor)
+	 */
 	public void prettyPrint(StringBuffer sb,
-			IVHDLConcurrentStatement concurrentStatement, int indentLevel);
+			IVHDLConcurrentStatement concurrentStatement, int indentLevel,
+			IProgressMonitor monitor);
 			
+	/**
+	 * Pretty print a VHDL process declarative item and its contents. The result
+	 * is appended to the input string buffer. This method is called as a part
+	 * of pretty print the full VHDL design file. This method is
+	 * <code>public</code> for testing purpose only.
+	 * 
+	 * @param sb
+	 *            the input string buffer
+	 * @param processDeclarativeItem
+	 *            the input VHDL process declarative item.
+	 * @param indentLevel
+	 *            the indent level for pretty print result.
+	 * @param monitor
+	 *            the progress monitor to use for reporting progress to the
+	 *            user. It is the caller's responsibility to call done() on the
+	 *            given monitor. Accepts <code>null</code>, indicating that no
+	 *            progress should be reported and that the operation cannot be
+	 *            cancelled.
+	 * @see #prettyPrint(StringBuffer, IVHDLDesignFile, int, IProgressMonitor)
+	 */
 	public void prettyPrint(StringBuffer sb,
-			IVHDLProcessDeclarativeItem processDeclarativeItem, int indentLevel);
+			IVHDLProcessDeclarativeItem processDeclarativeItem,
+			int indentLevel, IProgressMonitor monitor);
 	
+	/**
+	 * Pretty print a VHDL sequential statement and its contents. The result is
+	 * appended to the input string buffer. This method is called as a part of
+	 * pretty print the full VHDL design file. This method is
+	 * <code>public</code> for testing purpose only.
+	 * 
+	 * @param sb
+	 *            the input string buffer
+	 * @param sequentialStatement
+	 *            the input VHDL sequential statement.
+	 * @param indentLevel
+	 *            the indent level for pretty print result.
+	 * @param monitor
+	 *            the progress monitor to use for reporting progress to the
+	 *            user. It is the caller's responsibility to call done() on the
+	 *            given monitor. Accepts <code>null</code>, indicating that no
+	 *            progress should be reported and that the operation cannot be
+	 *            cancelled.
+	 * @see #prettyPrint(StringBuffer, IVHDLDesignFile, int, IProgressMonitor)
+	 */
 	public void prettyPrint(StringBuffer sb,
-			IVHDLSequentialStatement sequentialStatement, int indentLevel);
+			IVHDLSequentialStatement sequentialStatement, int indentLevel,
+			IProgressMonitor monitor);
 	
+	/**
+	 * Pretty print a VHDL case statement alternative and its contents. The
+	 * result is appended to the input string buffer. This method is called as a
+	 * part of pretty print the full VHDL design file. This method is
+	 * <code>public</code> for testing purpose only.
+	 * 
+	 * @param sb
+	 *            the input string buffer
+	 * @param caseStatementAlternative
+	 *            the input VHDL case statement alternative.
+	 * @param indentLevel
+	 *            the indent level for pretty print result.
+	 * @param monitor
+	 *            the progress monitor to use for reporting progress to the
+	 *            user. It is the caller's responsibility to call done() on the
+	 *            given monitor. Accepts <code>null</code>, indicating that no
+	 *            progress should be reported and that the operation cannot be
+	 *            cancelled.
+	 * @see #prettyPrint(StringBuffer, IVHDLDesignFile, int, IProgressMonitor)
+	 */
 	public void prettyPrint(StringBuffer sb,
 			IVHDLCaseStatementAlternative caseStatementAlternative,
-			int indentLevel);
+			int indentLevel, IProgressMonitor monitor);
 	
+	/**
+	 * Pretty print a VHDL IF clause and its contents. The
+	 * result is appended to the input string buffer. This method is called as a
+	 * part of pretty print the full VHDL design file. This method is
+	 * <code>public</code> for testing purpose only.
+	 * 
+	 * @param sb
+	 *            the input string buffer
+	 * @param ifClause
+	 *            the input VHDL IF clause.
+	 * @param indentLevel
+	 *            the indent level for pretty print result.
+	 * @param monitor
+	 *            the progress monitor to use for reporting progress to the
+	 *            user. It is the caller's responsibility to call done() on the
+	 *            given monitor. Accepts <code>null</code>, indicating that no
+	 *            progress should be reported and that the operation cannot be
+	 *            cancelled.
+	 * @see #prettyPrint(StringBuffer, IVHDLDesignFile, int, IProgressMonitor)
+	 */
 	public void prettyPrint(StringBuffer sb, IVHDLIfClause ifClause,
-			int indentLevel);
+			int indentLevel, IProgressMonitor monitor);
 
+	/**
+	 * Pretty print a VHDL ELSIF clause and its contents. The
+	 * result is appended to the input string buffer. This method is called as a
+	 * part of pretty print the full VHDL design file. This method is
+	 * <code>public</code> for testing purpose only.
+	 * 
+	 * @param sb
+	 *            the input string buffer
+	 * @param elsifClause
+	 *            the input VHDL ELSIF clause.
+	 * @param indentLevel
+	 *            the indent level for pretty print result.
+	 * @param monitor
+	 *            the progress monitor to use for reporting progress to the
+	 *            user. It is the caller's responsibility to call done() on the
+	 *            given monitor. Accepts <code>null</code>, indicating that no
+	 *            progress should be reported and that the operation cannot be
+	 *            cancelled.
+	 * @see #prettyPrint(StringBuffer, IVHDLDesignFile, int, IProgressMonitor)
+	 */
 	public void prettyPrint(StringBuffer sb, IVHDLElsifClause elsifClause,
-			int indentLevel);
+			int indentLevel, IProgressMonitor monitor);
 
+	/**
+	 * Pretty print a VHDL ELSE clause and its contents. The
+	 * result is appended to the input string buffer. This method is called as a
+	 * part of pretty print the full VHDL design file. This method is
+	 * <code>public</code> for testing purpose only.
+	 * 
+	 * @param sb
+	 *            the input string buffer
+	 * @param elseClause
+	 *            the input VHDL ELSE clause.
+	 * @param indentLevel
+	 *            the indent level for pretty print result.
+	 * @param monitor
+	 *            the progress monitor to use for reporting progress to the
+	 *            user. It is the caller's responsibility to call done() on the
+	 *            given monitor. Accepts <code>null</code>, indicating that no
+	 *            progress should be reported and that the operation cannot be
+	 *            cancelled.
+	 * @see #prettyPrint(StringBuffer, IVHDLDesignFile, int, IProgressMonitor)
+	 */
 	public void prettyPrint(StringBuffer sb, IVHDLElseClause elseClause,
-			int indentLevel);
+			int indentLevel, IProgressMonitor monitor);
+
 }

@@ -65,7 +65,8 @@ public class VXMI2VHDLUtils {
 		
 		// 1. Pretty print the design file to a string buffer (80%)
 		StringBuffer sb = new StringBuffer();
-		VXMI2VHDLPrettyPrinter prettyPrinter = new VXMI2VHDLPrettyPrinter();
+		IVXMI2VHDLPrettyPrinter prettyPrinter = VXMI2VHDLPrettyPrinter
+				.getDefault();
 		prettyPrinter.prettyPrint(sb, designFile, 0, subMonitor.newChild(80));
 
 		// 2. Get the VHDL folder
