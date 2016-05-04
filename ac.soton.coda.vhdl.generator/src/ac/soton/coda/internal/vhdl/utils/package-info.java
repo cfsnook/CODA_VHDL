@@ -11,12 +11,13 @@
 
 /**
  * <p>
- *
+ * This package contains utility classes for the VHDL generation. 
  * </p>
  *
  * @author htson
- * @version
- * @see
- * @since
+ * @version 0.1
+ * @see ac.soton.coda.internal.vhdl.utils.VHDLGeneratorUtils
+ * @see ac.soton.coda.internal.vhdl.utils.VHDLResourceUtils
+ * @since 0.0.1
  */
 package ac.soton.coda.internal.vhdl.utils;

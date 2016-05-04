@@ -43,16 +43,27 @@ import ac.soton.eventb.emf.components.util.ComponentsUtils;
 public class EventB2VXMIUtils {
 
 	/**
-	 * @param component
+	 * Utility method for translating the component model with the given machine
+	 * to VXMI. The generated VXMI will be put in the default VHDL folder of the
+	 * project.
+	 * 
+	 * @param mch the input Event-B machine
+	 * @param component the input component of the Event-B machine.
 	 * @param monitor
+	 *            the progress monitor to use for reporting progress to the
+	 *            user. It is the caller's responsibility to call done() on the
+	 *            given monitor. Accepts <code>null</code>, indicating that no
+	 *            progress should be reported and that the operation cannot be
+	 *            cancelled.
 	 * @throws CoreException
+	 *             if unexpected error occurs during the translation.
 	 */
 	public static void perform(Machine mch, Component component,
 			IProgressMonitor monitor) throws CoreException {
-		// Split the progress monitor to 100%
+		// Convert the progress monitor to 100%
 		SubMonitor subMonitor = SubMonitor.convert(monitor, 100);
 
-		// 1. Get the input/output connectors (5%)
+		// 1. (5%) Get the input/output connectors
 		Connector[] connectors = ComponentsUtils.getConnectors(mch);
 		Connector[] inputConnectors = ComponentsUtils.getInputConnector(
 				component, connectors);
@@ -60,7 +71,7 @@ public class EventB2VXMIUtils {
 				component, connectors);
 		subMonitor.worked(5);
 
-		// 2. Use the remaining 95% on generating the VHDL test bench.
+		// 2. (95%) Use the remaining on generating VXMI.
 		String fileName = mch.getName();
 		generate(mch, component, inputConnectors, outputConnectors, fileName,
 				subMonitor.newChild(90));
