@@ -9,13 +9,13 @@
  *     University of Southampton - initial API and implementation
  *******************************************************************************/
 
-package ac.soton.coda.internal.vhdl.utils.tests;
+package ac.soton.coda.tests.vxmi2vhdl;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 
-import ac.soton.coda.internal.vhdl.utils.IVXMI2VHDLPrettyPrinter;
-import ac.soton.coda.internal.vhdl.utils.VXMI2VHDLPrettyPrinter;
+import ac.soton.coda.internal.vxmi2vhdl.IVXMI2VHDLPrettyPrinter;
+import ac.soton.coda.internal.vxmi2vhdl.VXMI2VHDLPrettyPrinter;
 import ac.soton.coda.vhdl.IVHDLBlockDeclarativeItem;
 import ac.soton.coda.vhdl.IVHDLCaseStatementAlternative;
 import ac.soton.coda.vhdl.IVHDLConcurrentStatement;

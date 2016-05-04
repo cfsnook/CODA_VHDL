@@ -27,6 +27,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eventb.emf.core.machine.Machine;
 import org.rodinp.core.RodinDBException;
 
+import ac.soton.coda.internal.vxmi2vhdl.IVHDLLibrary;
+import ac.soton.coda.internal.vxmi2vhdl.VHDLLibrary;
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.emf.components.Connector;
 import ac.soton.eventb.emf.components.util.ComponentsUtils;

@@ -22,6 +22,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eventb.emf.core.machine.Machine;
 
+import ac.soton.coda.internal.vxmi2vhdl.IVHDLLibrary;
+
 /**
  * <p>
  *

@@ -28,5 +28,5 @@ Require-Bundle: org.eclipse.ui;bundle-version="3.106.1",
  org.eventb.core.ast;bundle-version="3.2.0",
  org.eventb.core.seqprover;bundle-version="3.1.0",
  ac.soton.emf.translator;bundle-version="0.0.1"
-Export-Package: ac.soton.coda.internal.vhdl.utils;x-friends:="ac.soton.coda.vhdl.generator.tests"
+Export-Package: ac.soton.coda.internal.vxmi2vhdl;x-friends:="ac.soton.coda.vhdl.generator.tests"
 Bundle-ActivationPolicy: lazy

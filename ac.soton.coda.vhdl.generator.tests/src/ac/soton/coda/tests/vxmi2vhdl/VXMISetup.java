@@ -9,7 +9,7 @@
  *     University of Southampton - initial API and implementation
  *******************************************************************************/
 
-package ac.soton.coda.internal.vhdl.utils.tests;
+package ac.soton.coda.tests.vxmi2vhdl;
 
 import ac.soton.coda.vhdl.IVHDLDesignFile;
 import ac.soton.coda.vhdl.IVHDLDesignUnit;

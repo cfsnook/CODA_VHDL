@@ -33,8 +33,8 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import ac.soton.coda.internal.vhdl.utils.VHDLGeneratorUtils;
-import ac.soton.coda.internal.vhdl.utils.VXMI2VHDLPrettyPrinter;
-import ac.soton.coda.internal.vhdl.utils.VXMI2VHDLUtils;
+import ac.soton.coda.internal.vxmi2vhdl.VXMI2VHDLPrettyPrinter;
+import ac.soton.coda.internal.vxmi2vhdl.VXMI2VHDLUtils;
 
 /**
  * <p>

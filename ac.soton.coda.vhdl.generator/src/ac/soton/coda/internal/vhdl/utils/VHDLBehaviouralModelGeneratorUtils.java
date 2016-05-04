@@ -21,6 +21,8 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eventb.emf.core.machine.Machine;
 
+import ac.soton.coda.internal.vxmi2vhdl.IVHDLLibrary;
+import ac.soton.coda.internal.vxmi2vhdl.VHDLLibrary;
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.emf.components.Connector;
 import ac.soton.eventb.emf.components.util.ComponentsUtils;
