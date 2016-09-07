@@ -278,7 +278,7 @@ public class VXMI2VHDLPrettyPrinter implements IVXMI2VHDLPrettyPrinter {
 					if (first) {
 						first = false;
 					} else {
-						sb.append("\n");
+						sb.append(";\n");
 					}
 					prettyPrint(sb, interfaceElement, indentLevel + 2,
 							loopMonitor.newChild(1));
@@ -362,7 +362,7 @@ public class VXMI2VHDLPrettyPrinter implements IVXMI2VHDLPrettyPrinter {
 
 			// 5. The END keyword
 			sb.append("\n");
-			sb.append("END " + identifier + "\n");
+			sb.append("END " + identifier + ";\n");
 			return;
 		}
 
@@ -422,7 +422,6 @@ public class VXMI2VHDLPrettyPrinter implements IVXMI2VHDLPrettyPrinter {
 
 			// 4 (25%) Signal type
 			sb.append(type);
-			sb.append(";");
 			subMonitor.worked(25);
 
 			return;
@@ -451,7 +450,7 @@ public class VXMI2VHDLPrettyPrinter implements IVXMI2VHDLPrettyPrinter {
 			// 2. (25%) Type identifier
 			String identifier = fullTypeDeclaration.getIdentifier();
 			sb.append(identifier);
-			sb.append(" is ");
+			sb.append(" IS ");
 			subMonitor.worked(25);
 
 			// 3. (25%) Type definition
@@ -776,7 +775,7 @@ public class VXMI2VHDLPrettyPrinter implements IVXMI2VHDLPrettyPrinter {
 					.getCaseStatementAlternatives();
 
 			// Convert the monitor to the number of case statement alternatives
-			// plus 2.
+			// plus 3.
 			SubMonitor subMonitor = SubMonitor.convert(monitor,
 					caseStatementAlternatives.size() + 1);
 
@@ -794,6 +793,10 @@ public class VXMI2VHDLPrettyPrinter implements IVXMI2VHDLPrettyPrinter {
 				prettyPrint(sb, caseStatementAlternative, indentLevel + 1,
 						subMonitor.newChild(1));
 			}
+			sb.append("\n");
+			sb.append(printIndentation(indentLevel));
+			sb.append("END CASE;");
+			subMonitor.worked(1);
 
 			return;
 		}
@@ -844,6 +847,7 @@ public class VXMI2VHDLPrettyPrinter implements IVXMI2VHDLPrettyPrinter {
 
 			sb.append(printIndentation(indentLevel));
 			sb.append(target + " <= " + waveform);
+			sb.append(";");
 			subMonitor.worked(100);
 
 			return;

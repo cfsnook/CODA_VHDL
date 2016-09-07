@@ -3,6 +3,7 @@ package ac.soton.coda.vhdl.vxmiTranslator;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -53,9 +54,17 @@ public class Component_VariablesAsSignalDeclarationRule extends
 			String identifier = variable.getName();
 			Type type = EventBSCUtils.getVariableType(mchRoot, identifier);
 			String vhdlType = VXMITranslatorUtils.eventBTypeToVHDLType(type);
-			VHDLUtils.createInterfaceSignalDeclaration(architectureBody,
+			if (vhdlType == null) {
+				vhdlType = VXMITranslatorUtils.getVHDLType(identifier, mchRoot);
+			}
+			if (vhdlType != null) {
+				VHDLUtils.createInterfaceSignalDeclaration(architectureBody,
 					identifier, null, vhdlType);
-			usedTypes.add(vhdlType);
+				usedTypes.add(vhdlType);
+			} else {
+				VHDLUtils.createInterfaceSignalDeclaration(architectureBody,
+						identifier, null, type.toString());
+			}
 		}
 
 		// Mark the translation of variables is finished.

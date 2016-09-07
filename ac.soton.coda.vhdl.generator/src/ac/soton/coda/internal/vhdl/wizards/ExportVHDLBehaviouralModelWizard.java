@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
@@ -13,6 +14,7 @@ import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.persistence.EMFRodinDB;
 
 import ac.soton.coda.internal.eventB2vxmi.EventB2VXMIUtils;
+import ac.soton.coda.internal.vhdl.utils.VHDLGeneratorUtils;
 import ac.soton.eventb.emf.components.Component;
 
 public class ExportVHDLBehaviouralModelWizard extends Wizard implements IExportWizard {
@@ -55,16 +57,24 @@ public class ExportVHDLBehaviouralModelWizard extends Wizard implements IExportW
 						EventB2VXMIUtils
 								.perform(mch, component, monitor);
 					} catch (CoreException e) {
-						e.printStackTrace();
+						VHDLGeneratorUtils.log(e.getStatus().getSeverity(),
+								"Error translating Event-B Component to VXMI", e);
 					}
 				}
 			});
 		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// Invocation exception is displayed in an error dialog.
+			Throwable cause = e.getCause();
+			MessageDialog.openError(
+					this.getShell(),
+					"Invocation Target Exception",
+					"Translating Event-B Component to VXMI because of: "
+							+ cause.getMessage());
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// Interrupted exception is displayed in an information dialog.
+			Thread.currentThread().interrupt();
+			MessageDialog.openInformation(this.getShell(), "Interrupted",
+					"Translating Event-B Component to VXMI is interupted");
 		}
 		return true;
 	}

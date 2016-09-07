@@ -52,6 +52,7 @@ public class Component_PortDeclarationRule extends AbstractVHDLRule implements
 				.fetch("@Used Types");
 		for (Connector inputConnector : inputConnectors) {
 			String type = inputConnector.getType();
+			type = VXMITranslatorUtils.eventBTypeToVHDLType(type);
 			VHDLUtils.createInterfaceSignalDeclaration(entityDeclaration,
 					inputConnector.getName(), VHDLMode.IN, type);
 			usedTypes.add(type);

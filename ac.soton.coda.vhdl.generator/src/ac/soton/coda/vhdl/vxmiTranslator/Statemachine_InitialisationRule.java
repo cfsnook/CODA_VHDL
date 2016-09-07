@@ -51,12 +51,12 @@ public class Statemachine_InitialisationRule extends AbstractVHDLRule implements
 		State targetState = (State) target;
 		Statemachine statemachine = (Statemachine) targetState.eContainer();
 		VHDLUtils.createSignalAssignmentStatement(ifClause,
-				statemachine.getName(), targetState.getName());
+				"current_" + statemachine.getName(), targetState.getName());
 		while (!StatemachinesUtils.isTopLevel(statemachine)) {
 			targetState = (State) statemachine.eContainer();
 			statemachine = (Statemachine) targetState.eContainer();
 			VHDLUtils.createSignalAssignmentStatement(ifClause,
-					statemachine.getName(), targetState.getName());
+					"current_" + statemachine.getName(), targetState.getName());
 		}
 		
 		return new ArrayList<TranslationDescriptor>();

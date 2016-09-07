@@ -78,13 +78,28 @@ public class EventB2VXMIUtils {
 	}
 
 	/**
+	 * Utility method for generating VXMI for an input component from a machine.
+	 * The list of input connectors and output connectors to the components are
+	 * also given. The (bare) name of the output file is given.
+	 * 
 	 * @param mch
+	 *            the input Event-B machine.
 	 * @param component
+	 *            the input component
 	 * @param inputConnectors
+	 *            the list of input connectors to the input component.
 	 * @param outputConnectors
+	 *            the list of output connectors of the input component.
 	 * @param fileName
-	 * @param newChild
+	 *            the (bare) name of the output file.
+	 * @param monitor
+	 *            the progress monitor to use for reporting progress to the
+	 *            user. It is the caller's responsibility to call done() on the
+	 *            given monitor. Accepts <code>null</code>, indicating that no
+	 *            progress should be reported and that the operation cannot be
+	 *            cancelled.
 	 * @throws CoreException
+	 *             if unexpected error occurs during the translation.
 	 */
 	private static void generate(Machine mch, Component component,
 			Connector[] inputConnectors, Connector[] outputConnectors,
@@ -96,28 +111,28 @@ public class EventB2VXMIUtils {
 		SubMonitor subMonitor = SubMonitor.convert(monitor,
 				"Generate VHDL Behavioural Model", 100);
 
-		// 1. Generate VHDL header (10%)
+		// 1. (10%) Generate VHDL header
 		subMonitor.subTask("Creating VHDL header");
 		IVHDLLibrary ieeeLib = new VHDLLibrary("ieee",
 				"ieee.std_logic_1164.ALL", "ieee.std_logic_unsigned.all");
 		VHDLResourceUtils.generateVHDLHeader(sb, subMonitor.newChild(10), ieeeLib);
 		sb = sb.append("\n");
 
-		// 2. Generate entity declaration (10%)
+		// 2. (10%) Generate entity declaration
 		subMonitor.subTask("Generating entity declaration");
 		generateEntityDeclaration(sb, entityName, inputConnectors,
 				outputConnectors, subMonitor.newChild(10));
 		sb = sb.append("\n");
 
-		// 3. Generate entity architecture (60%)
+		// 3. (60%) Generate entity architecture
 		subMonitor.subTask("Generating entity architecture");
 		generateEntityArchitecture(sb, entityName, subMonitor.newChild(60));
 		sb = sb.append("\n");
 		
-		// 4. Get the VHDL folder (10%)
+		// 4. (10%) Get the VHDL folder
 		IFolder folder = VHDLResourceUtils.getVHDLFolder(mch, subMonitor.newChild(10));
 
-		// 5. Create the VHDL output file (10%)
+		// 5. (10%) Create the VHDL output file
 		IFile file = folder.getFile(fileName + "." + component.getName()
 				+ ".vhdl");
 		InputStream source = new ByteArrayInputStream(sb.toString().getBytes());

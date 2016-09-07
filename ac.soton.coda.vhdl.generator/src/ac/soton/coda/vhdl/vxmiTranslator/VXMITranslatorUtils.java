@@ -11,11 +11,19 @@
 
 package ac.soton.coda.vhdl.vxmiTranslator;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.eclipse.emf.common.util.EList;
+import org.eventb.core.IMachineRoot;
 import org.eventb.core.ast.BooleanType;
+import org.eventb.core.ast.GivenType;
 import org.eventb.core.ast.IntegerType;
 import org.eventb.core.ast.Type;
 import org.eventb.emf.core.machine.Guard;
+import org.rodinp.core.RodinDBException;
 
 import ac.soton.coda.vhdl.IVHDLGuardedStatementElement;
 import ac.soton.coda.vhdl.IVHDLSequentialStatementsElement;
@@ -27,6 +35,7 @@ import ac.soton.eventb.emf.components.DelayedDataPacket;
 import ac.soton.eventb.emf.components.OperationAction;
 import ac.soton.eventb.emf.components.OperationGuard;
 import ac.soton.eventb.emf.components.PortWake;
+import ch.ethz.eventb.utils.EventBSCUtils;
 
 /**
  * <p>
@@ -40,6 +49,15 @@ import ac.soton.eventb.emf.components.PortWake;
  */
 public class VXMITranslatorUtils {
 
+	private static Map<String, String> eventB2VHDL;
+	
+	static {
+		eventB2VHDL = new HashMap<String, String>();
+		eventB2VHDL.put("≠", "/=");
+		eventB2VHDL.put("−", "-");
+		eventB2VHDL.put("≔", "<=");
+	}
+	
 	/**
 	 * The debug flag. This is set by the option when the platform is launched.
 	 * Client should not try to reset this flag.
@@ -61,14 +79,26 @@ public class VXMITranslatorUtils {
 	 * @return
 	 */
 	public static String eventBTypeToVHDLType(Type type) {
-		// TODO Check for other composite type?
 		if (type instanceof BooleanType) {
 			return "BOOL";
 		}
 		if (type instanceof IntegerType) {
 			return "int";
 		}
-		return type.toString();
+		if (type instanceof GivenType)
+			return ((GivenType) type).getName();
+		return null;
+	}
+
+	/**
+	 * @param type
+	 * @return
+	 */
+	public static String eventBTypeToVHDLType(String type) {
+		if ("BIT7".equals(type)) {
+			return "std_logic_vector(6 downto 0)";
+		}
+		return type;
 	}
 
 	/**
@@ -101,7 +131,10 @@ public class VXMITranslatorUtils {
 	 */
 	private static String eventBpredicateToVHDLBooleanExpression(
 			String predicate) {
-		// TODO Auto-generated method stub
+		for (String eventBop : eventB2VHDL.keySet()) {
+			predicate = predicate.replaceAll(eventBop,
+					eventB2VHDL.get(eventBop));
+		}
 		return predicate;
 	}
 
@@ -135,7 +168,11 @@ public class VXMITranslatorUtils {
 	public static String eventBAssignmentToVHDLSignalAssignment(
 			String assignment) {
 		// TODO this is done ad-hoc at the moment using string replacement.
-		return assignment.replaceFirst("≔", " <= ");
+		for (String eventBop : eventB2VHDL.keySet()) {
+			assignment = assignment
+					.replace(eventBop, eventB2VHDL.get(eventBop));
+		}
+		return assignment;
 	}
 
 	/**
@@ -196,6 +233,37 @@ public class VXMITranslatorUtils {
 					connector.getName());
 		}
 		return booleanExpression;
+	}
+
+	/**
+	 * @param identifier
+	 * @param mchRoot
+	 * @return
+	 * @throws RodinDBException
+	 */
+	public static String getVHDLType(String identifier, IMachineRoot mchRoot)
+			throws RodinDBException {
+		Map<String, String> scSeenAxioms = EventBSCUtils.getSCSeenAxioms(
+				mchRoot, false);
+		String patternString = identifier + "\\s*∈\\s*(.*)";
+		Pattern pattern = Pattern.compile(patternString);
+
+		for (String pred : scSeenAxioms.values()) {
+	        Matcher matcher = pattern.matcher(pred);
+			if (matcher.matches()) {
+				String type = matcher.group(0);
+				if ("BIT2".equals(type)) {
+					return "std_logic_vector(1 downto 0)";
+				}
+				if ("BIT3".equals(type)) {
+					return "std_logic_vector(2 downto 0)";
+				}
+				if ("BIT7".equals(type)) {
+					return "std_logic_vector(6 downto 0)";
+				}
+			}
+		}
+		return null;
 	}
 
 }

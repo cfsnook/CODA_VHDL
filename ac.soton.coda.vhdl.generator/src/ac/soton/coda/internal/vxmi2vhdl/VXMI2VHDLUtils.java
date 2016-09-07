@@ -44,9 +44,18 @@ import ac.soton.coda.vhdl.IVHDLDesignFile;
 public class VXMI2VHDLUtils {
 
 	/**
-	 * @param designFile
+	 * Utility method for pretty print a VXMI to VHDL
+	 * 
+	 * @param resource
+	 *            the resource containing the VXMI.
 	 * @param monitor
+	 *            the progress monitor to use for reporting progress to the
+	 *            user. It is the caller's responsibility to call done() on the
+	 *            given monitor. Accepts <code>null</code>, indicating that no
+	 *            progress should be reported and that the operation cannot be
+	 *            cancelled.
 	 * @throws CoreException
+	 *             if unexpected error occurs during the translation.
 	 */
 	public static void prettyPrintVXMI2VHDL(Resource resource,
 			IProgressMonitor monitor) throws CoreException {
@@ -65,13 +74,13 @@ public class VXMI2VHDLUtils {
 		if (designFile == null)
 			return;
 		
-		// 1. Pretty print the design file to a string buffer (80%)
+		// 1. (80%) Pretty print the design file to a string buffer
 		StringBuffer sb = new StringBuffer();
 		IVXMI2VHDLPrettyPrinter prettyPrinter = VXMI2VHDLPrettyPrinter
 				.getDefault();
 		prettyPrinter.prettyPrint(sb, designFile, 0, subMonitor.newChild(80));
 
-		// 2. Get the VHDL folder
+		// 2. (5%) Get the VHDL folder
 		URI uri = resource.getURI();
 		uri = uri.trimFileExtension();
 		int segmentCount = uri.segmentCount();
@@ -81,14 +90,15 @@ public class VXMI2VHDLUtils {
 		folderPath = folderPath.makeAbsolute();
 		IFolder folder = ResourcesPlugin.getWorkspace().getRoot()
 				.getFolder(folderPath);
+		subMonitor.worked(5);
 
-		// 5. Create the VHDL output file (10%)
+		// 3. (15%) Create the VHDL output file
 		IFile file = folder.getFile(filename + ".vhdl");
 		InputStream source = new ByteArrayInputStream(sb.toString().getBytes());
 		if (!file.exists()) {
-			file.create(source, true, subMonitor.newChild(20));
+			file.create(source, true, subMonitor.newChild(15));
 		} else {
-			file.setContents(source, true, true, subMonitor.newChild(20));
+			file.setContents(source, true, true, subMonitor.newChild(15));
 		}
 
 	}
