@@ -86,7 +86,7 @@
             command_id="ac.soton.coda.vhdl.generator.vxmiTranslator"
             name="VXMI Translator"
             root_source_class="Component"
-            source_package="http://soton.ac.uk/models/eventb/components/2014"
+            source_package="http://soton.ac.uk/models/eventb/components/2016"
             translator_id="ac.soton.coda.vhdl.generator.vxmiTranslator">
       </translator>
    </extension>
