@@ -29,6 +29,7 @@ import ac.soton.coda.vhdl.IVHDLGuardedStatementElement;
 import ac.soton.coda.vhdl.IVHDLSequentialStatementsElement;
 import ac.soton.coda.vhdl.IVHDLSignalAssignmentStatement;
 import ac.soton.coda.vhdl.custom.VHDLUtils;
+import ac.soton.eventb.emf.components.AbstractPort;
 import ac.soton.eventb.emf.components.Connector;
 import ac.soton.eventb.emf.components.DataPacket;
 import ac.soton.eventb.emf.components.DelayedDataPacket;
@@ -197,10 +198,10 @@ public class VXMITranslatorUtils {
 	public static IVHDLSignalAssignmentStatement createSignalAssignmentStatement(
 			IVHDLSequentialStatementsElement sequentialStatementsElement,
 			DelayedDataPacket packet) {
-		Connector connector = packet.getConnector();
+		AbstractPort port = packet.getPort();
 		String value = packet.getValue();
 		return VHDLUtils.createSignalAssignmentStatement(
-				sequentialStatementsElement, connector.getName(), value);
+				sequentialStatementsElement, port.getName(), value);
 
 	}
 

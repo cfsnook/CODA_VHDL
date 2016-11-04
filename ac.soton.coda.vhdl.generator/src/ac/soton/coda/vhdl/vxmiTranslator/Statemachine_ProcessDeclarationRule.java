@@ -5,8 +5,6 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eventb.emf.core.machine.Machine;
-import org.eventb.emf.core.machine.MachinePackage;
 
 import ac.soton.coda.vhdl.IVHDLArchitectureBody;
 import ac.soton.coda.vhdl.IVHDLProcessStatement;
@@ -15,7 +13,7 @@ import ac.soton.emf.translator.TranslationDescriptor;
 import ac.soton.emf.translator.configuration.IRule;
 import ac.soton.eventb.emf.components.Component;
 import ac.soton.eventb.emf.components.ComponentsPackage;
-import ac.soton.eventb.emf.components.Connector;
+import ac.soton.eventb.emf.components.InPort;
 import ac.soton.eventb.emf.components.util.ComponentsUtils;
 import ac.soton.eventb.statemachines.Statemachine;
 import ac.soton.eventb.statemachines.StatemachinesUtils;
@@ -52,13 +50,10 @@ public class Statemachine_ProcessDeclarationRule extends AbstractVHDLRule implem
 
 		Component component = (Component) statemachine
 				.getContaining(ComponentsPackage.Literals.COMPONENT);
-		Machine mch = (Machine) component
-				.getContaining(MachinePackage.Literals.MACHINE);
-		Connector[] connectors = ComponentsUtils.getConnectors(mch);
-		Connector[] inputConnectors = ComponentsUtils.getInputConnector(
-				component, connectors);
-		for (Connector inputConnector : inputConnectors) {
-			signals.add(inputConnector.getName());
+		
+		InPort[] inPorts = ComponentsUtils.getInPorts(component);
+		for (InPort inPort : inPorts) {
+			signals.add(inPort.getName());
 		}
 
 		IVHDLProcessStatement processStatement = VHDLUtils

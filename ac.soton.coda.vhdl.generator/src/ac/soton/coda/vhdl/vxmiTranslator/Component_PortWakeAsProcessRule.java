@@ -53,7 +53,8 @@ public class Component_PortWakeAsProcessRule extends AbstractVHDLRule implements
 				throw new Exception("Dependency KO");
 			List<String> dataPackets = new ArrayList<String>();
 			for (DataPacket receive : receives) {
-				dataPackets.add(receive.getConnector().getName());
+				String inPortName = receive.getPort().getName();
+				dataPackets.add(inPortName);
 			}
 			IVHDLProcessStatement processStatement = VHDLUtils
 					.createProcessStatement(architectureBody,
