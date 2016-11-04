@@ -4,8 +4,6 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eventb.emf.core.machine.Machine;
-import org.eventb.emf.core.machine.MachinePackage;
 
 import ac.soton.coda.vhdl.IVHDLEntityDeclaration;
 import ac.soton.coda.vhdl.VHDLMode;
@@ -13,7 +11,8 @@ import ac.soton.coda.vhdl.custom.VHDLUtils;
 import ac.soton.emf.translator.TranslationDescriptor;
 import ac.soton.emf.translator.configuration.IRule;
 import ac.soton.eventb.emf.components.Component;
-import ac.soton.eventb.emf.components.Connector;
+import ac.soton.eventb.emf.components.InPort;
+import ac.soton.eventb.emf.components.OutPort;
 import ac.soton.eventb.emf.components.util.ComponentsUtils;
 
 public class Component_PortDeclarationRule extends AbstractVHDLRule implements
@@ -43,26 +42,26 @@ public class Component_PortDeclarationRule extends AbstractVHDLRule implements
 				VHDLMode.IN, "std_logic");
 		VHDLUtils.createInterfaceSignalDeclaration(entityDeclaration, "reset",
 				VHDLMode.IN, "std_logic");
-		Machine mch = (Machine) component
-				.getContaining(MachinePackage.Literals.MACHINE);
-		Connector[] connectors = ComponentsUtils.getConnectors(mch);
-		Connector[] inputConnectors = ComponentsUtils.getInputConnector(
-				component, connectors);
+
 		Collection<String> usedTypes = (Collection<String>) storage
 				.fetch("@Used Types");
-		for (Connector inputConnector : inputConnectors) {
-			String type = inputConnector.getType();
+
+		// In-ports
+		InPort[] inPorts = ComponentsUtils.getInPorts(component); 
+		for (InPort inPort : inPorts) {
+			String type = inPort.getType();
 			type = VXMITranslatorUtils.eventBTypeToVHDLType(type);
 			VHDLUtils.createInterfaceSignalDeclaration(entityDeclaration,
-					inputConnector.getName(), VHDLMode.IN, type);
+					inPort.getName(), VHDLMode.IN, type);
 			usedTypes.add(type);
 		}
-		Connector[] outputConnectors = ComponentsUtils.getOutputConnector(
-				component, connectors);
-		for (Connector outputConnector : outputConnectors) {
-			String type = outputConnector.getType();
+		
+		// Out-ports
+		OutPort[] outPorts = ComponentsUtils.getOutPorts(component);
+		for (OutPort outPort : outPorts) {
+			String type = outPort.getType();
 			VHDLUtils.createInterfaceSignalDeclaration(entityDeclaration,
-					outputConnector.getName(), VHDLMode.OUT, type);
+					outPort.getName(), VHDLMode.OUT, type);
 			usedTypes.add(type);
 		}
 
