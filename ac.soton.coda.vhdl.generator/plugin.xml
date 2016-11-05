@@ -54,6 +54,12 @@
                commandId="ac.soton.coda.vhdl.generator.vxmiTranslator"
                label="Translate to VXMI"
                style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="ac.soton.coda.vhdl.generator.IsComponent">
+               </reference>
+            </visibleWhen>
          </command>
          <command
                commandId="ac.soton.coda.vhdl.generator.vhdlTranslator"
@@ -188,6 +194,26 @@
                source_class="Statemachine">
          </rule>	
       </ruleset>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="ac.soton.coda.vhdl.generator.IsComponent">
+         <and>
+            <count
+                  value="1">
+            </count>
+            <iterate
+                  operator="or">
+               <adapt
+                     type="org.eclipse.emf.ecore.EObject">
+                  <instanceof
+                        value="ac.soton.eventb.emf.components.Component">
+                  </instanceof>
+               </adapt>
+            </iterate>
+         </and>
+      </definition>
    </extension>
 
 </plugin>
