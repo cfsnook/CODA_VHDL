@@ -49,6 +49,8 @@ public class Component_PortDeclarationRule extends AbstractVHDLRule implements
 		// In-ports
 		InPort[] inPorts = ComponentsUtils.getInPorts(component); 
 		for (InPort inPort : inPorts) {
+			if (inPort == null) // htson: How can this be?
+				continue;
 			String type = inPort.getType();
 			type = VXMITranslatorUtils.eventBTypeToVHDLType(type);
 			VHDLUtils.createInterfaceSignalDeclaration(entityDeclaration,
@@ -59,7 +61,10 @@ public class Component_PortDeclarationRule extends AbstractVHDLRule implements
 		// Out-ports
 		OutPort[] outPorts = ComponentsUtils.getOutPorts(component);
 		for (OutPort outPort : outPorts) {
+			if (outPort == null) // htson: How can this be?
+				continue;
 			String type = outPort.getType();
+			type = VXMITranslatorUtils.eventBTypeToVHDLType(type);
 			VHDLUtils.createInterfaceSignalDeclaration(entityDeclaration,
 					outPort.getName(), VHDLMode.OUT, type);
 			usedTypes.add(type);

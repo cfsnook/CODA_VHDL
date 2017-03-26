@@ -57,6 +57,8 @@ public class VXMITranslatorUtils {
 		eventB2VHDL.put("≠", "/=");
 		eventB2VHDL.put("−", "-");
 		eventB2VHDL.put("≔", "<=");
+		eventB2VHDL.put("⊖", "-");
+		eventB2VHDL.put("⊕", "+");
 	}
 	
 	/**
@@ -96,9 +98,18 @@ public class VXMITranslatorUtils {
 	 * @return
 	 */
 	public static String eventBTypeToVHDLType(String type) {
-		if ("BIT7".equals(type)) {
-			return "std_logic_vector(6 downto 0)";
-		}
+		// BitVector(n)
+		String patternString = "BitVector\\((.*)\\)";
+
+        Pattern pattern = Pattern.compile(patternString);
+
+        Matcher matcher = pattern.matcher(type);
+
+        if (matcher.matches()) {
+        	int size = Integer.parseInt(matcher.group(1));
+			return "std_logic_vector(" + (size - 1) + " downto 0)";
+        }
+        
 		return type;
 	}
 
@@ -110,6 +121,8 @@ public class VXMITranslatorUtils {
 		StringBuffer sb = new StringBuffer();
 		boolean first = true;
 		for (Guard guard : guards) {
+			if (guard.isTheorem())
+				continue;
 			if (first) {
 				first = false;
 			} else {
@@ -132,6 +145,21 @@ public class VXMITranslatorUtils {
 	 */
 	private static String eventBpredicateToVHDLBooleanExpression(
 			String predicate) {
+		// TODO this is done ad-hoc at the moment using string replacement.
+		String patternString = "bvRange\\s*\\((.*),(.*),(.*)\\)";
+		String replacementString = "$1($3 downto $2)";
+		predicate = predicate.replaceAll(patternString, replacementString);
+		
+		// Zero
+		patternString = "Zero\\s*\\((.*)\\)";
+		replacementString = "to_bit_vector(0, $1)";
+		predicate = predicate.replaceAll(patternString, replacementString);
+		
+		// One
+		patternString = "One\\s*\\((.*)\\)";
+		replacementString = "to_bit_vector(0, $1)";
+		predicate = predicate.replaceAll(patternString, replacementString);
+
 		for (String eventBop : eventB2VHDL.keySet()) {
 			predicate = predicate.replaceAll(eventBop,
 					eventB2VHDL.get(eventBop));
@@ -147,6 +175,8 @@ public class VXMITranslatorUtils {
 		StringBuffer sb = new StringBuffer();
 		boolean first = true;
 		for (OperationGuard guard : guards) {
+			if (guard.isTheorem()) 
+				continue;
 			if (first) {
 				first = false;
 			} else {
@@ -169,6 +199,21 @@ public class VXMITranslatorUtils {
 	public static String eventBAssignmentToVHDLSignalAssignment(
 			String assignment) {
 		// TODO this is done ad-hoc at the moment using string replacement.
+		String patternString = "bvRange\\s*\\((.*),(.*),(.*)\\)";
+		String replacementString = "$1($3 downto $2)";
+		assignment = assignment.replaceAll(patternString, replacementString);
+		
+		// Zero
+		patternString = "Zero\\s*\\((.*)\\)";
+		replacementString = "to_bit_vector(0, $1)";
+		assignment = assignment.replaceAll(patternString, replacementString);
+		
+		// One
+		patternString = "One\\s*\\((.*)\\)";
+		replacementString = "to_bit_vector(0, $1)";
+		assignment = assignment.replaceAll(patternString, replacementString);
+
+		// eventB ops
 		for (String eventBop : eventB2VHDL.keySet()) {
 			assignment = assignment
 					.replace(eventBop, eventB2VHDL.get(eventBop));
@@ -246,6 +291,10 @@ public class VXMITranslatorUtils {
 			throws RodinDBException {
 		Map<String, String> scSeenAxioms = EventBSCUtils.getSCSeenAxioms(
 				mchRoot, false);
+
+		Map<String, String> scInvariants = EventBSCUtils.getSCInvariants(
+				mchRoot, false);
+		
 		String patternString = identifier + "\\s*∈\\s*(.*)";
 		Pattern pattern = Pattern.compile(patternString);
 
@@ -253,17 +302,36 @@ public class VXMITranslatorUtils {
 	        Matcher matcher = pattern.matcher(pred);
 			if (matcher.matches()) {
 				String type = matcher.group(0);
-				if ("BIT2".equals(type)) {
-					return "std_logic_vector(1 downto 0)";
-				}
-				if ("BIT3".equals(type)) {
-					return "std_logic_vector(2 downto 0)";
-				}
-				if ("BIT7".equals(type)) {
-					return "std_logic_vector(6 downto 0)";
-				}
+				String vhdlType = getVHDLType(type);
+				if (vhdlType != null)
+					return vhdlType;
 			}
 		}
+
+		for (String pred : scInvariants.values()) {
+	        Matcher matcher = pattern.matcher(pred);
+			if (matcher.matches()) {
+				String type = matcher.group(1);
+				String vhdlType = getVHDLType(type);
+				if (vhdlType != null)
+					return vhdlType;
+			}
+		}
+		return null;
+	}
+
+	private static String getVHDLType(String type) {
+		// BitVector(n)
+		String patternString = "BitVector\\((.*)\\)";
+
+        Pattern pattern = Pattern.compile(patternString);
+
+        Matcher matcher = pattern.matcher(type);
+
+        if (matcher.matches()) {
+        	int size = Integer.parseInt(matcher.group(1));
+			return "std_logic_vector(" + (size - 1) + " downto 0)";
+        }
 		return null;
 	}
 

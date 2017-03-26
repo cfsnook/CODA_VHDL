@@ -51,10 +51,10 @@ public class Component_VariablesAsSignalDeclarationRule extends
 		Collection<String> usedTypes = (Collection<String>) storage.fetch("@Used Types");
 		for (ComponentVariable variable : variables) {
 			String identifier = variable.getName();
+			String vhdlType = VXMITranslatorUtils.getVHDLType(identifier, mchRoot);
 			Type type = EventBSCUtils.getVariableType(mchRoot, identifier);
-			String vhdlType = VXMITranslatorUtils.eventBTypeToVHDLType(type);
 			if (vhdlType == null) {
-				vhdlType = VXMITranslatorUtils.getVHDLType(identifier, mchRoot);
+				vhdlType = VXMITranslatorUtils.eventBTypeToVHDLType(type);
 			}
 			if (vhdlType != null) {
 				VHDLUtils.createInterfaceSignalDeclaration(architectureBody,

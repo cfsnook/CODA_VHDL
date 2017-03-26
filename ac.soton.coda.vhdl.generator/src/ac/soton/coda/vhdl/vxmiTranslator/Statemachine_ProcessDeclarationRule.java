@@ -53,6 +53,8 @@ public class Statemachine_ProcessDeclarationRule extends AbstractVHDLRule implem
 		
 		InPort[] inPorts = ComponentsUtils.getInPorts(component);
 		for (InPort inPort : inPorts) {
+			if (inPort == null)
+				continue;
 			signals.add(inPort.getName());
 		}
 
