@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: ac.soton.coda.vhdl.editor;singleton:=true
-Bundle-Version: 0.0.1.release
+Bundle-Version: 0.0.2.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: ac.soton.coda.vhdl.presentation.VHDLEditorPlugin$Implementation
 Bundle-Vendor: %providerName
