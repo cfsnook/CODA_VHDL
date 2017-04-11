@@ -2,7 +2,7 @@
 <feature
       id="ac.soton.coda.vhdl.feature"
       label="%featureName"
-      version="0.0.4.release"
+      version="0.0.5.qualifier"
       provider-name="%featureVendor"
       plugin="ac.soton.coda.vhdl.branding"
       license-feature="ac.soton.coda.licence"
