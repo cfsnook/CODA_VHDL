@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Localization: plugin
 Bundle-Name: %pluginName
 Bundle-SymbolicName: ac.soton.coda.vhdl.generator;singleton:=true
-Bundle-Version: 0.0.5.release
+Bundle-Version: 0.0.6.qualifier
 Bundle-Vendor: %pluginVendor
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.eclipse.ui;bundle-version="3.106.1",
@@ -27,6 +27,7 @@ Require-Bundle: org.eclipse.ui;bundle-version="3.106.1",
  ac.soton.eventb.emf.core.extension;bundle-version="4.0.0",
  org.eventb.core.ast;bundle-version="3.2.0",
  org.eventb.core.seqprover;bundle-version="3.1.0",
- ac.soton.emf.translator;bundle-version="0.0.1"
+ ac.soton.emf.translator;bundle-version="0.0.1",
+ org.eclipse.core.expressions;bundle-version="3.4.600"
 Export-Package: ac.soton.coda.internal.vxmi2vhdl;x-friends:="ac.soton.coda.vhdl.generator.tests"
 Bundle-ActivationPolicy: lazy
