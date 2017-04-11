@@ -59,6 +59,7 @@ public class VXMITranslatorUtils {
 		eventB2VHDL.put("≔", "<=");
 		eventB2VHDL.put("⊖", "-");
 		eventB2VHDL.put("⊕", "+");
+		eventB2VHDL.put("bvValue", "to_integer");
 	}
 	
 	/**
@@ -159,11 +160,13 @@ public class VXMITranslatorUtils {
 		patternString = "One\\s*\\((.*)\\)";
 		replacementString = "to_bit_vector(0, $1)";
 		predicate = predicate.replaceAll(patternString, replacementString);
-
+		
+		// Other ops name
 		for (String eventBop : eventB2VHDL.keySet()) {
 			predicate = predicate.replaceAll(eventBop,
 					eventB2VHDL.get(eventBop));
 		}
+		
 		return predicate;
 	}
 
