@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: ac.soton.coda.vhdl.doc;singleton:=true
-Bundle-Version: 0.0.1.release
+Bundle-Version: 0.0.2.qualifier
 Bundle-Vendor: %pluginVendor
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
