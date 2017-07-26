@@ -35,74 +35,16 @@
          id="ac.soton.coda.vhdl.feature"
          version="0.0.0"/>
 
-   <plugin
-         id="ac.soton.coda.vhdl.generator.tests"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <includes
+         id="ac.soton.coda.vhdl.source.feature"
+         version="0.0.0"/>
 
-   <plugin
-         id="ac.soton.coda.vhdl.tests"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <includes
+         id="ac.soton.coda.vhdl.tests.feature"
+         version="0.0.0"/>
 
-   <plugin
-         id="ac.soton.coda.vhdl.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.coda.vhdl.branding.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.coda.vhdl.doc.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.coda.vhdl.edit.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.coda.vhdl.editor.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.coda.vhdl.generator.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.coda.vhdl.generator.tests.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.coda.vhdl.tests.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <includes
+         id="ac.soton.coda.vhdl.tests.source.feature"
+         version="0.0.0"/>
 
 </feature>
