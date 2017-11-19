@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    (c) Crown owned copyright 2015, 2017 (UK Ministry of Defence)
+    (c) Crown owned copyright (2017) (UK Ministry of Defence)
    
-    All rights reserved. This program and the accompanying materials  are 
+    All rights reserved. This program and the accompanying materials are 
     made available under the terms of the Eclipse Public License v1.0 which
     accompanies this distribution, and is available at
     http://www.eclipse.org/legal/epl-v10.html
    
-    This is to identify the UK Ministry of Defence as owners along with the
-    license rights provided.
-   
     Contributors:
-        University of Southampton - Initial API and implementation
+         University of Southampton - Initial API and implementation
  -->
 <feature
       id="ac.soton.coda.vhdl.feature"
@@ -20,7 +17,7 @@
       provider-name="%featureVendor"
       plugin="ac.soton.coda.vhdl.branding"
       license-feature="ac.soton.coda.licence"
-      license-feature-version="1.1.1.qualifier">
+      license-feature-version="1.1.2.release">
 
    <description>
       %featureDescription
@@ -45,13 +42,14 @@
       <import plugin="org.eclipse.ui.ide"/>
       <import plugin="org.eclipse.ui" version="3.106.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.runtime" version="3.10.0" match="greaterOrEqual"/>
+      <import plugin="ac.soton.eventb.emf.components" version="5.0.1" match="compatible"/>
       <import plugin="org.eclipse.emf.common" version="2.10.1" match="greaterOrEqual"/>
       <import plugin="ac.soton.eventb.emf.diagrams" version="4.0.2" match="greaterOrEqual"/>
       <import plugin="org.eventb.emf.persistence" version="3.4.2" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.ecore" version="2.10.2" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.transaction" version="1.8.0" match="greaterOrEqual"/>
       <import plugin="org.rodinp.core" version="1.7.0" match="greaterOrEqual"/>
-      <import plugin="ch.ethz.eventb.utils" version="0.2.2" match="greaterOrEqual"/>
+      <import plugin="ch.ethz.eventb.utils" version="0.2.4" match="greaterOrEqual"/>
       <import plugin="org.eventb.core" version="3.2.0" match="greaterOrEqual"/>
       <import plugin="ac.soton.eventb.emf.oracle" version="1.0.1" match="greaterOrEqual"/>
       <import plugin="ac.soton.coda.ui" version="0.0.3" match="greaterOrEqual"/>
@@ -63,13 +61,12 @@
       <import plugin="org.eventb.core.ast" version="3.2.0" match="greaterOrEqual"/>
       <import plugin="org.eventb.core.seqprover" version="3.1.0" match="greaterOrEqual"/>
       <import plugin="ac.soton.emf.translator" version="0.0.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.expressions" version="3.4.600" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.runtime" version="3.10.0" match="compatible"/>
       <import plugin="org.eclipse.ui" version="3.7.0" match="compatible"/>
       <import plugin="org.eclipse.ui.ide" version="3.7.0" match="compatible"/>
       <import plugin="org.eclipse.emf.workspace" version="1.5.0" match="compatible"/>
       <import plugin="org.eclipse.core.resources" version="3.9.1" match="compatible"/>
-      <import plugin="ac.soton.eventb.emf.components" version="5.0.1" match="compatible"/>
-      <import plugin="org.eclipse.core.expressions" version="3.4.600" match="greaterOrEqual"/>
       <import plugin="org.eventb.emf.persistence" version="3.5.0" match="compatible"/>
       <import plugin="org.rodinp.core" version="1.7.0" match="compatible"/>
       <import plugin="org.eventb.emf.core" version="4.2.1" match="compatible"/>
