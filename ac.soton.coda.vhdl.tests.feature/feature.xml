@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    (c) Crown owned copyright (2017) (UK Ministry of Defence)
+   
+    All rights reserved. This program and the accompanying materials are 
+    made available under the terms of the Eclipse Public License v1.0 which
+    accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+   
+    Contributors:
+         University of Southampton - Initial API and implementation
+ -->
 <feature
       id="ac.soton.coda.vhdl.tests.feature"
       label="%featureName"
-      version="0.0.1.qualifier"
+      version="0.0.5.qualifier"
       provider-name="%featureVendor"
-      plugin="ac.soton.coda.vhdl.branding">
+      plugin="ac.soton.coda.vhdl.branding"
+      license-feature="ac.soton.coda.licence"
+      license-feature-version="1.1.1.release">
 
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+   <description>
+      %featureDescription
    </description>
 
-   <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
+   <copyright>
+      %featureCopyright
    </copyright>
 
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
-   </license>
+   <url>
+      <discovery label="B-Hive @ Soton" url="https://eventb-soton.github.io"/>
+   </url>
 
    <requires>
       <import plugin="org.junit" version="4.11.0" match="greaterOrEqual"/>
