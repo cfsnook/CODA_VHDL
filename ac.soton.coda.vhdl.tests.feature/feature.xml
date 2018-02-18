@@ -28,6 +28,7 @@
    </copyright>
 
    <url>
+      <update label="%updateSiteName" url="http://rodin-b-sharp.sourceforge.net/updates"/>
       <discovery label="B-Hive @ Soton" url="https://eventb-soton.github.io"/>
    </url>
 

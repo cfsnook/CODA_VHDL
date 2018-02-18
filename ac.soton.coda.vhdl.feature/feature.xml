@@ -24,12 +24,12 @@
    </description>
 
    <copyright>
-      %copyright
+      %featureCopyright
    </copyright>
 
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
-   </license>
+   <url>
+      <update label="%updateSiteName" url="http://rodin-b-sharp.sourceforge.net/updates"/>
+   </url>
 
    <requires>
       <import plugin="org.eclipse.core.runtime" version="3.12.0" match="compatible"/>
@@ -51,6 +51,7 @@
       <import plugin="org.eclipse.emf.ecore" version="2.10.2" match="compatible"/>
       <import plugin="org.eclipse.emf.transaction" version="1.8.0" match="compatible"/>
       <import plugin="org.rodinp.core" version="1.7.0" match="compatible"/>
+      <import plugin="ch.ethz.eventb.utils" version="0.2.4" match="compatible"/>
       <import plugin="org.eventb.core" version="3.2.0" match="compatible"/>
       <import plugin="ac.soton.eventb.emf.oracle" version="1.0.1" match="compatible"/>
       <import plugin="ac.soton.coda.ui" version="0.0.4" match="compatible"/>
@@ -63,11 +64,6 @@
       <import plugin="org.eventb.core.seqprover" version="3.1.0" match="compatible"/>
       <import plugin="ac.soton.emf.translator" version="3.0.0" match="compatible"/>
       <import plugin="org.eclipse.core.expressions" version="3.4.600" match="compatible"/>
-      <import plugin="org.eclipse.ui" version="3.7.0" match="compatible"/>
-      <import plugin="org.eclipse.ui.ide" version="3.7.0" match="compatible"/>
-      <import plugin="org.eclipse.emf.workspace" version="1.5.0" match="compatible"/>
-      <import plugin="org.eclipse.core.resources" version="3.9.1" match="compatible"/>
-      <import plugin="ch.ethz.eventb.utils" version="0.2.4" match="compatible"/>
    </requires>
 
    <plugin
@@ -103,13 +99,6 @@
          download-size="0"
          install-size="0"
          version="0.0.0"/>
-
-   <plugin
-         id="ac.soton.emf.translator"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 
    <plugin
          id="ac.soton.coda.vhdl.doc"
