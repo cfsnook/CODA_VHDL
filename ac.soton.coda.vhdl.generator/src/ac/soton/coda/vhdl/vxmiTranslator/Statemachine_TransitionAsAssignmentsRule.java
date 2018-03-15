@@ -124,13 +124,10 @@ public class Statemachine_TransitionAsAssignmentsRule extends AbstractVHDLRule
 					sequentialStatementsElement, split[0], split[1]);
 		}
 		
-		// Entering states: The list of states containing the target state but
-		// not the source state.
+		// Entering states: The list of states containing the target state
 		List<State> targetContainingStates = StatemachinesUtils
 				.getContainingStates(targetState);
-		List<State> sourceContainingStates = StatemachinesUtils
-				.getContainingStates(sourceState);
-		targetContainingStates.removeAll(sourceContainingStates);
+		//targetContainingStates.removeAll(sourceContainingStates);
 		for (State state : targetContainingStates) {
 			Statemachine statemachine = (Statemachine) state.eContainer();
 			VHDLUtils.createSignalAssignmentStatement(
