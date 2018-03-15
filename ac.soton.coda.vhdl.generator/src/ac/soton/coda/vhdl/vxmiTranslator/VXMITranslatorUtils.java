@@ -60,6 +60,10 @@ public class VXMITranslatorUtils {
 		eventB2VHDL.put("≔", "<=");
 		eventB2VHDL.put("⊖", "-");
 		eventB2VHDL.put("⊕", "+");
+		eventB2VHDL.put("∨", "or");
+		eventB2VHDL.put("∧", "and");
+		eventB2VHDL.put("⊤", "true");
+		eventB2VHDL.put("⊥", "false");
 		eventB2VHDL.put("bvValue", "to_integer");
 	}
 	
