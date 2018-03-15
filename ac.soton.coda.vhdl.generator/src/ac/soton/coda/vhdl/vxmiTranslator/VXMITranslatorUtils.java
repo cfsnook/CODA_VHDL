@@ -128,7 +128,7 @@ public class VXMITranslatorUtils {
 			if (first) {
 				first = false;
 			} else {
-				sb.append(" & ");
+				sb.append(" and ");
 			}
 			String predicate = guard.getPredicate();
 			sb.append("(" + eventBpredicateToVHDLBooleanExpression(predicate)
@@ -184,7 +184,7 @@ public class VXMITranslatorUtils {
 			if (first) {
 				first = false;
 			} else {
-				sb.append(" & ");
+				sb.append(" and ");
 			}
 			String predicate = guard.getPredicate();
 			sb.append("(" + eventBpredicateToVHDLBooleanExpression(predicate)
@@ -263,7 +263,7 @@ public class VXMITranslatorUtils {
 			String booleanExpression) {
 		String currentBooleanExpression = guardedStatementsElement
 				.getBooleanExpression();
-		String newBooleanExpression = "(" + currentBooleanExpression + " & "
+		String newBooleanExpression = "(" + currentBooleanExpression + " and "
 				+ booleanExpression + ")";
 		guardedStatementsElement.setBooleanExpression(newBooleanExpression);
 	}
