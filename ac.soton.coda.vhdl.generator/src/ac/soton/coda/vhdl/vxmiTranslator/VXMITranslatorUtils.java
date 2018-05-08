@@ -13,6 +13,7 @@
 package ac.soton.coda.vhdl.vxmiTranslator;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -89,10 +90,10 @@ public class VXMITranslatorUtils {
 	 */
 	public static String eventBTypeToVHDLType(Type type) {
 		if (type instanceof BooleanType) {
-			return "BOOL";
+			return "boolean";
 		}
 		if (type instanceof IntegerType) {
-			return "int";
+			return "integer";
 		}
 		if (type instanceof GivenType)
 			return ((GivenType) type).getName();
@@ -104,6 +105,9 @@ public class VXMITranslatorUtils {
 	 * @return
 	 */
 	public static String eventBTypeToVHDLType(String type) {
+		if (type.trim().equals("BOOL"))
+			return "boolean";
+		
 		// BitVector(n)
 		String patternString = "BitVector\\((.*)\\)";
 
@@ -123,7 +127,7 @@ public class VXMITranslatorUtils {
 	 * @param transitionGuard
 	 * @return
 	 */
-	public static String eventBGuardsToVHDLBooleanExpression(EList<Guard> guards) {
+	public static String eventBGuardsToVHDLBooleanExpression(List<Guard> guards) {
 		StringBuffer sb = new StringBuffer();
 		boolean first = true;
 		for (Guard guard : guards) {
