@@ -94,7 +94,7 @@ public class VXMI2VHDLUtils {
 		subMonitor.worked(5);
 
 		// 3. (15%) Create the VHDL output file
-		IFile file = folder.getFile(filename + ".vhdl");
+		IFile file = folder.getFile(filename + ".vhd"); // Feature Request #8: Use .vhd instead of .vhdl
 		InputStream source = new ByteArrayInputStream(sb.toString().getBytes());
 		if (!file.exists()) {
 			file.create(source, true, subMonitor.newChild(15));
