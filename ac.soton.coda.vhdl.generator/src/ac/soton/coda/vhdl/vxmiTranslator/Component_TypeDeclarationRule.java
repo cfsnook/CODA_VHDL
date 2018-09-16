@@ -59,8 +59,9 @@ public class Component_TypeDeclarationRule extends AbstractVHDLRule implements
 			throw new Exception("Dependency KO");
 
 		// Add the type declaration
-		VHDLUtils.createEnumerationTypeDeclaration(entityDeclaration, "BOOL",
-				"TRUE", "FALSE");
+		// Since we are now using the built-in boolean type, we do not need to generate this any more.
+//		VHDLUtils.createEnumerationTypeDeclaration(entityDeclaration, "BOOL",
+//				"TRUE", "FALSE");
 
 		// TODO Add user-defined types
 		Machine mch = (Machine) component

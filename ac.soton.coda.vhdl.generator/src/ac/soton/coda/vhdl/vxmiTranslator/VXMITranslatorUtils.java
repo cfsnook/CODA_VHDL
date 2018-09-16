@@ -65,6 +65,8 @@ public class VXMITranslatorUtils {
 		eventB2VHDL.put("∧", "and");
 		eventB2VHDL.put("⊤", "true");
 		eventB2VHDL.put("⊥", "false");
+		eventB2VHDL.put("TRUE", "true"); // Use built-in VHDL boolean type 
+		eventB2VHDL.put("FALSE", "false"); // Use built-in VHDL boolean type
 		eventB2VHDL.put("bvValue", "to_integer");
 	}
 	
