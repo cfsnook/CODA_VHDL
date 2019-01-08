@@ -135,7 +135,7 @@ public class EventB2VXMIUtils {
 
 		// 5. (10%) Create the VHDL output file
 		IFile file = folder.getFile(fileName + "." + component.getName()
-				+ ".vhdl");
+				+ ".vhd");
 		InputStream source = new ByteArrayInputStream(sb.toString().getBytes());
 		if (!file.exists()) {
 			file.create(source, true, subMonitor.newChild(20));
