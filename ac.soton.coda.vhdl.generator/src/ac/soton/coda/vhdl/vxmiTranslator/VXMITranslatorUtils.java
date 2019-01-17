@@ -13,6 +13,7 @@
 package ac.soton.coda.vhdl.vxmiTranslator;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -60,6 +61,12 @@ public class VXMITranslatorUtils {
 		eventB2VHDL.put("≔", "<=");
 		eventB2VHDL.put("⊖", "-");
 		eventB2VHDL.put("⊕", "+");
+		eventB2VHDL.put("∨", "or");
+		eventB2VHDL.put("∧", "and");
+		eventB2VHDL.put("⊤", "true");
+		eventB2VHDL.put("⊥", "false");
+		eventB2VHDL.put("TRUE", "true"); // Use built-in VHDL boolean type 
+		eventB2VHDL.put("FALSE", "false"); // Use built-in VHDL boolean type
 		eventB2VHDL.put("bvValue", "to_integer");
 	}
 	
@@ -85,10 +92,10 @@ public class VXMITranslatorUtils {
 	 */
 	public static String eventBTypeToVHDLType(Type type) {
 		if (type instanceof BooleanType) {
-			return "BOOL";
+			return "boolean";
 		}
 		if (type instanceof IntegerType) {
-			return "int";
+			return "integer";
 		}
 		if (type instanceof GivenType)
 			return ((GivenType) type).getName();
@@ -100,6 +107,9 @@ public class VXMITranslatorUtils {
 	 * @return
 	 */
 	public static String eventBTypeToVHDLType(String type) {
+		if (type.trim().equals("BOOL"))
+			return "boolean";
+		
 		// BitVector(n)
 		String patternString = "BitVector\\((.*)\\)";
 
@@ -119,7 +129,7 @@ public class VXMITranslatorUtils {
 	 * @param transitionGuard
 	 * @return
 	 */
-	public static String eventBGuardsToVHDLBooleanExpression(EList<Guard> guards) {
+	public static String eventBGuardsToVHDLBooleanExpression(List<Guard> guards) {
 		StringBuffer sb = new StringBuffer();
 		boolean first = true;
 		for (Guard guard : guards) {
@@ -128,7 +138,7 @@ public class VXMITranslatorUtils {
 			if (first) {
 				first = false;
 			} else {
-				sb.append(" & ");
+				sb.append(" and ");
 			}
 			String predicate = guard.getPredicate();
 			sb.append("(" + eventBpredicateToVHDLBooleanExpression(predicate)
@@ -184,7 +194,7 @@ public class VXMITranslatorUtils {
 			if (first) {
 				first = false;
 			} else {
-				sb.append(" & ");
+				sb.append(" and ");
 			}
 			String predicate = guard.getPredicate();
 			sb.append("(" + eventBpredicateToVHDLBooleanExpression(predicate)
@@ -263,7 +273,7 @@ public class VXMITranslatorUtils {
 			String booleanExpression) {
 		String currentBooleanExpression = guardedStatementsElement
 				.getBooleanExpression();
-		String newBooleanExpression = "(" + currentBooleanExpression + " & "
+		String newBooleanExpression = "(" + currentBooleanExpression + " and "
 				+ booleanExpression + ")";
 		guardedStatementsElement.setBooleanExpression(newBooleanExpression);
 	}

@@ -871,13 +871,14 @@ public class VXMI2VHDLPrettyPrinter implements IVXMI2VHDLPrettyPrinter {
 		String label = caseStatementAlternative.getLabel();
 		EList<IVHDLSequentialStatement> sequentialStatements = caseStatementAlternative
 				.getSequentialStatements();
-		sb.append(printIndentation(indentLevel));
 		// Convert the monitor to the number of sequential statements
 		// plus 1 (for the WHEN clause).
 		SubMonitor subMonitor = SubMonitor.convert(monitor,
 				sequentialStatements.size() + 1);
 
 		// 1. WHEN label
+		sb.append("\n");
+		sb.append(printIndentation(indentLevel));
 		sb.append("WHEN " + label + " => \n");
 		subMonitor.worked(1);
 

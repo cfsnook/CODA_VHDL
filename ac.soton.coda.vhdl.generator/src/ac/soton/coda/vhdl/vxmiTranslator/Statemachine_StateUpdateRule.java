@@ -29,7 +29,7 @@ public class Statemachine_StateUpdateRule extends AbstractVHDLRule implements IR
 	@Override
 	public List<TranslationDescriptor> fire(EObject sourceElement,
 			List<TranslationDescriptor> translatedElements) throws Exception {
-		IVHDLElsifClause elsifClause = (IVHDLElsifClause) storage.fetch("@RaisingEdge");
+		IVHDLElsifClause elsifClause = (IVHDLElsifClause) storage.fetch("@RisingEdge");
 		if (elsifClause == null) {
 			throw new Exception("Dependency KO");
 		}
@@ -47,7 +47,7 @@ public class Statemachine_StateUpdateRule extends AbstractVHDLRule implements IR
 	@Override
 	public boolean dependenciesOK(EObject sourceElement,
 			List<TranslationDescriptor> translatedElements) throws Exception {
-		Object fetch = storage.fetch("@RaisingEdge");
+		Object fetch = storage.fetch("@RisingEdge");
 		if (fetch == null)
 			return false;
 		return true;

@@ -54,8 +54,8 @@ public class Component_ClockProcessRule extends AbstractVHDLRule implements IRul
 		storage.stash("@Initial", ifClause);
 
 		IVHDLElsifClause elsifClause = VHDLUtils.createElsifClause(ifStatement,
-				"(raising_edge(clk))");
-		storage.stash("@RaisingEdge", elsifClause);
+				"(rising_edge(clk))");
+		storage.stash("@RisingEdge", elsifClause);
 
 		return super.fire(sourceElement, translatedElements);
 	}
